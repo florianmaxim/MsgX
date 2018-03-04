@@ -62,12 +62,11 @@ export default class BlockchainController {
 
         CONTRACT.setMessage.sendTransaction(message, data, (err, res) => {
 
-            console.log('data')
+            //console.log('data')
 
-            console.log(data)
-            
+            //console.log(data)   
 
-            console.log('transactionHash:'+res)
+            //console.log('transactionHash:'+res)
 
             const transactionHash = res;
             
@@ -75,20 +74,22 @@ export default class BlockchainController {
 
             filter.watch((error, result) => {
 
-                console.log('filter watching:'+result)
+                //console.log('filter watching:'+result)
 
                 web3.eth.getTransactionReceipt(transactionHash, (err, res) => {
 
-                    console.log('getTransactionReceipt:'+res)
+                    if(err) return cb(err);
+
+                    //console.log('getTransactionReceipt:'+res)
 
                     if(res){
 
-                        console.log('transcation mined')
+                        //console.log('transcation mined')
                         filter.stopWatching();
                         cb(message);
                         
                     }else{
-                        console.log('transcation pending')
+                        //console.log('transcation pending')
                     }
 
                 });
