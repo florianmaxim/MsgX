@@ -1,15 +1,18 @@
 {
+    "contractABI": [{"constant":false,"inputs":[{"name":"newMessage","type":"string"}],"name":"setMessage","outputs":[{"name":"","type":"string"}],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"kill","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"price","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"author","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"message","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"step","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}],
+    "contractAddress": "0x5c5c1db807b00544f3e81f56a65e62281cb2923f",
+
     "log": true,
 
     "port": 8080,
     
     "info": {
-        "name": "React Jungle",
-        "slogan": "Making Your Way Through The React Jungle"
+        "name": "MsgX",
+        "slogan": "ÐApp To Set A Golden Message Until Someone Pays A Higher Price"
     },
 
     "version": {
-        "number": "0.7.0",
-        "name": "Mango"
+        "number": "0.0.1",
+        "name": "Gold"
     }
 }

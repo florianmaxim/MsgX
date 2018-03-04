@@ -1,7 +1,7 @@
 {
-  "name": "xgold",
+  "name": "msgx",
   "version": "0.0.1",
-  "description": "Cryptocurrency Counterparts",
+  "description": "ÐApp To Set A Golden Message Until Someone Pays A Higher Price",
   "main": "index.js",
   "scripts": {
     "build": "npx babel src --out-dir lib && webpack --config .webpack.config.babel.js --progress --env production",

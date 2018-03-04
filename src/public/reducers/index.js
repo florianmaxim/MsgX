@@ -1,9 +1,9 @@
 import {combineReducers}   from 'redux';
 
-import ReducerFruits from './reducer-fruits';
+import ReducerMessage from './reducer-message';
 
 export default combineReducers({
 
-    fruits: ReducerFruits
+    message: ReducerMessage
 
 });
