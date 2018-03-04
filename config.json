@@ -1,0 +1,15 @@
+{
+    "log": true,
+
+    "port": 8080,
+    
+    "info": {
+        "name": "React Jungle",
+        "slogan": "Making Your Way Through The React Jungle"
+    },
+
+    "version": {
+        "number": "0.7.0",
+        "name": "Mango"
+    }
+}
