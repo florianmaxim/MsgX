@@ -1,6 +1,6 @@
 pragma solidity ^0.4.6;
 
-contract MsgX007 {
+contract MsgX008 {
 
     address private creator;
     
@@ -20,4 +20,9 @@ contract MsgX007 {
         return "Amount too low.";
     }
     
+    function kill() public{
+        if(msg.sender == creator)
+            selfdestruct(creator);
+    }
+
 }
