@@ -14,5 +14,10 @@
     "version": {
         "number": "0.0.1",
         "name": "data"
-    }
+    },
+
+    "logoInitials": "fm",
+    "logoText": "To The Internet With ❤️ From Florian Maxim",
+    "logoEnabled": true,
+    "logoURL": "https://florianmaxim.com"    
 }

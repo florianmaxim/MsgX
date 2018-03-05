@@ -3,19 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Button = styled.div`
-
-    z-index: 2;
-
-    position: fixed;
-
-    bottom: 25vh;
-    left: 50vw;
-    transform: translateX(-50%);
-
-    @media(orientation:portrait) {
-        bottom: 15vh;
-    }
-
+    
     width: 250px;
     height: 53px;
 
@@ -44,20 +32,20 @@ const Button = styled.div`
     background: -ms-linear-gradient(top, rgba(241,231,103,1) 0%, rgba(255,215,0,1) 100%);
     background: linear-gradient(to bottom, rgba(241,231,103,1) 0%, rgba(255,215,0,1) 100%);
 
-    border: 3px solid rgba(255,255,255, .25);
-    
-    border-radius: 5px;
-
     display: flex;
     align-items:center;
     justify-content:center;
 
     cursor: pointer;
 
-    box-shadow: 0px -0px 10px rgba(255, 215, 0, .75);
+    border: 1px solid rgba(255,255,255, .85);
+    //border: 1px solid rgba(0,0,0, .85);
+    
+    border-radius: 5px;
+
+    box-shadow: 0px 0px 25px rgba(255, 255, 0, .85);
 
     &:hover {
-        //color: black;
         
         background: rgba(253,215,0,1);
         background: -moz-linear-gradient(top, rgba(253,215,0,1) 0%, rgba(241,232,103,1) 100%);
@@ -67,7 +55,6 @@ const Button = styled.div`
         background: -ms-linear-gradient(top, rgba(253,215,0,1) 0%, rgba(241,232,103,1) 100%);
         background: linear-gradient(to bottom, rgba(253,215,0,1) 0%, rgba(241,232,103,1) 100%);
 
-       //border: 2.5px solid gold;
       }
 `
 export default class ComponentButton extends React.Component {
