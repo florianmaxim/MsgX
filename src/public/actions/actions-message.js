@@ -63,7 +63,7 @@ const setMessage = (message, price) => {
 
     Blockchain.setMessage(message, price, (msg) => {
 
-      //console.log(msg)
+      getPrice();
 
       dispatch({type: "RECEIVE_MESSAGE", payload: msg})
 

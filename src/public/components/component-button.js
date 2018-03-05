@@ -23,7 +23,8 @@ const Button = styled.div`
     font-weight: bold;
   
     text-transform: uppercase;
-    font-size: 10px;
+    font-size: 14px;
+    font-weight: bold;
     letter-spacing: 2px;
    
     text-align:center;
@@ -43,8 +44,9 @@ const Button = styled.div`
     background: -ms-linear-gradient(top, rgba(241,231,103,1) 0%, rgba(255,215,0,1) 100%);
     background: linear-gradient(to bottom, rgba(241,231,103,1) 0%, rgba(255,215,0,1) 100%);
 
-    border: 1px solid rgba(255,255,255, .35);
-    border-radius: 3.5px;
+    border: 3px solid rgba(255,255,255, .25);
+    
+    border-radius: 5px;
 
     display: flex;
     align-items:center;

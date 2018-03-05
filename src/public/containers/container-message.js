@@ -48,6 +48,7 @@ const Guy = styled.textarea`
   font-family: Roboto;
   font-size: 10vh;
   color: white;
+  text-shadow: 0px -0px 50px rgba(255, 215, 0, .75);
 
   text-align: center;
   resize: both;
@@ -67,19 +68,20 @@ class ContainerMessage extends React.Component {
     this.state = {
       message: `${this.props.message.message}`,
       readonly: false,
-      caption: 'buy'
+      caption: `buy (eth ${(this.props.message.price/1000000000000000000).toFixed(3)})`
     }
   }
 
   componentDidMount(){
     this.props.getMessage();
     this.props.getPrice();
-    this.props.getAuthor();    
+    this.props.getAuthor();
   }
 
   componentWillReceiveProps(props){
     this.setState({
-      message: `${props.message.message}`
+      message: `${props.message.message}`,
+      caption:  `buy (eth ${(this.props.message.price/1000000000000000000).toFixed(3)})`
     })
   }
 
@@ -91,18 +93,6 @@ class ContainerMessage extends React.Component {
     if (e.key === 'Enter') {
       this.handleOnSubmit()
     }
-  }
-
-  handleOnMouseOver(){
-    this.setState({
-      caption:  `eth ${(this.props.message.price/1000000000000000000).toFixed(3)}`
-    })
-  }
-
-  handleOnMouseOut(){
-    this.setState({
-      caption:  `buy`
-    })
   }
 
   handleChange(event) {
@@ -120,9 +110,7 @@ class ContainerMessage extends React.Component {
           </Wrapper>
           <ComponentButton 
             caption={this.state.caption}
-            onClick={() => this.handleOnSubmit()}
-            onMouseOver={()=>(this.handleOnMouseOver())}
-            onMouseOut={()=>(this.handleOnMouseOut())}        
+            onClick={() => this.handleOnSubmit()}   
           />
       </Outer>
     );
