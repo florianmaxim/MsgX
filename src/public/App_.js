@@ -13,35 +13,24 @@ injectGlobal`
     radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
   }
 
-  input{
-
-    width: 100vw;
-    //word-break: break-all;
-
-    margin: 0;
-    padding:0;
-
-    font-size: 5em;
-    line-height: 5em;
-    font-family: Roboto;
-
-    text-align:center;
-
-    text-shadow: 0px 0px 100px rgba(255, 255, 255, 1);
-
-    color: white;
-    background: transparent;
-
-    border: 0;
-    outline: none;
-
-
+  ::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    height:0;
+    border: 0px solid gold;
+    background: black;  /* optional: just make scrollbar invisible */
+  }
+  /* optional: show position indicator in red */
+  ::-webkit-scrollbar-thumb {
+      background:gold;
+      width:0px;
+      height:0;
   }
 `;
 
 export const Outer = styled.div`
   width: 100vw;
   height: 100vh;
+
   box-sizing: border-box;
   border: 0px solid gold;
 

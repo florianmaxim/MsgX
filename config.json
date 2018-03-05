@@ -4,7 +4,7 @@
 
     "log": true,
 
-    "port": 8080,
+    "port": 3030,
     
     "info": {
         "name": "MsgX",
@@ -13,6 +13,6 @@
 
     "version": {
         "number": "0.0.1",
-        "name": "Gold"
+        "name": "data"
     }
 }

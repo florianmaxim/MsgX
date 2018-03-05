@@ -10,7 +10,7 @@ const getMessage = () => {
 
     Blockchain.getMessage((msg) => {
 
-      console.log(msg)
+      //console.log(msg)
 
       dispatch({type: "RECEIVE_MESSAGE", payload: msg})
 
@@ -27,7 +27,7 @@ const getPrice = () => {
 
     Blockchain.getPrice((msg) => {
 
-      console.log(msg)
+      //console.log(msg)
 
       dispatch({type: "RECEIVE_PRICE", payload: msg.toNumber()})
 
@@ -44,7 +44,7 @@ const getAuthor = () => {
 
     Blockchain.getAuthor((msg) => {
 
-      console.log(msg)
+      //console.log(msg)
 
       dispatch({type: "RECEIVE_AUTHOR", payload: msg})
 
@@ -63,7 +63,7 @@ const setMessage = (message, price) => {
 
     Blockchain.setMessage(message, price, (msg) => {
 
-      console.log(msg)
+      //console.log(msg)
 
       dispatch({type: "RECEIVE_MESSAGE", payload: msg})
 
