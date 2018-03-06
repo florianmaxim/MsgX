@@ -42,7 +42,7 @@
 
 # <p align="center">Mobile</p>
 
-## <p align="center">On mobile devices the awesome Chiper Browser grants to you access to the blockchain :</p>
+## <p align="center">On mobile devices Chiper Browser grants you access to the blockchain :</p>
 
 <p align="center">
 <img width="25%"  src="resources/logo-cipher.png"></img>
