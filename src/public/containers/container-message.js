@@ -1,3 +1,5 @@
+import * as config from '../../../config.json';
+
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
@@ -29,6 +31,8 @@ const Wrapper = styled.div`
 
   left: 0;
   top: 0;
+
+  transition: 1s all;
 
 `;
 
@@ -83,6 +87,112 @@ const PriceWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  a{
+    margin: 8px;
+    margin-right: 12px;
+    
+    padding:0;
+
+    width: 100%;
+    
+    font-family: Lato;
+    font-size: 12px;
+    font-weight: 600;
+    
+    color: red;
+    text-shadow: 0px -0px 4px rgba(255, 255, 255, .25);
+
+    //text-decoration: underline;
+    text-transform: uppercase;
+
+    text-align: right;
+  }
+
+`;
+
+const HintClose = styled.div`
+
+  transition: 0.25s all;
+
+  z-index: 22;
+  position: fixed;
+  right: 1.25vh;
+  top: 1.25vh;
+
+  font-family: Roboto;
+  font-size: 2.5vh;
+  letter-spacing: .125vh;
+
+  font-weight: 600;
+  
+  color: white;
+
+  cursor: pointer;
+  user-select: none;
+`;
+
+const Hint = styled.div`
+
+  transition: 0.25s all;
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  margin:0;
+  padding:0;
+
+  width: 100vw;
+  height: 0vh;
+
+  background: red;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  a{
+    margin: 10vw;
+    
+    padding:0;
+
+    width: 85vw;
+    
+    font-family: Roboto;
+    font-size: 2.5vh;
+    letter-spacing: .125vh;
+
+    font-weight: 600;
+    
+    color: white;
+    text-shadow: 0px -0px 5px rgba(255, 255, 255, .5);
+
+    //text-decoration: underline;
+    text-transform: uppercase;
+
+    text-align: left;
+
+    @media(orientation: portrait){
+
+      margin:0;
+      padding:0;
+      
+      font-family: Roboto;
+      font-size: 2.5vh;
+      //letter-spacing: .125vh;
+
+    }
+
+  }
+
+  @media(orientation: portrait){
+
+    height: 17.5vh;
+
+  }
 
 `;
 
@@ -165,11 +275,15 @@ class ContainerMessage extends React.Component {
       readonly: false,
       caption: `buy`,
       currency: 0,
-      toggle: 0
+      toggle: 0,
+      closed: false
     }
   }
 
   componentDidMount(){
+
+    this.props.getConnectionType();
+
     this.props.getMessage();
     this.props.getPrice();
     this.props.getAuthor();
@@ -177,11 +291,13 @@ class ContainerMessage extends React.Component {
 
   componentWillReceiveProps(props){
     this.setState({
-      message: `${props.message.message}`
+      message: `${props.message.message}`,
+      caption: `${props.message.connectionType==='websocket'?'(not connected)':'buy'}`
     })
   }
 
   handleOnSubmit(){
+    if(this.props.message.connectionType==='blockchain')
     this.props.setMessage(this.state.message, this.props.message.price)
   }
 
@@ -218,7 +334,30 @@ class ContainerMessage extends React.Component {
   render() {
     return (
       <Outer>
-          <Wrapper>
+           
+           <HintClose
+           style={{
+            display: this.props.message.connectionType==='websocket'&&this.state.closed!==true?'block':'none',                           
+           }}
+            onClick={()=>this.setState({closed: true})}
+           >✖</HintClose>
+           <Hint
+            style={{
+              height: this.state.closed!==true?'17.5vh':'0',
+              opacity: this.state.closed!==true?'1':'0',                            
+              display: this.props.message.connectionType==='websocket'?'flex':'none'
+            }}
+           >
+              <a href="https://github.com/florianmaxim/msgx" target="blank">
+              You are not connected to the blockchain. → Learn how 🎓
+              </a>
+            </Hint>
+
+          <Wrapper
+            style={{
+              marginTop: this.props.message.connectionType==='websocket'&&this.state.closed!==true?'20vh':'0'
+            }}
+          >
             <Textarea
                value={`${this.state.message}`}
                onChange={(event) => {this.handleChange(event)}} 
@@ -259,6 +398,8 @@ function props(state) {
 function actions(dispatch){
 
   return bindActionCreators({
+
+    getConnectionType: actionsMessage.getConnectionType,
 
     getMessage: actionsMessage.getMessage,
     getPrice:   actionsMessage.getPrice,    

@@ -1,5 +1,9 @@
 import * as config from '../../../config.json';
 
+import io from 'socket.io-client';
+
+
+
 const CONTRACT_ADDRESS = config.contractAddress;
 const CONTRACT_ABI = config.contractABI;
 
@@ -9,7 +13,17 @@ export default class BlockchainController {
 
     connect(){
 
+        this.connectionType = '';
+
+        this.socket = io.connect();
+            
+        this.socket.on('connect', function(){
+            console.log('Websocket: connected')
+        });
+
         if (typeof web3 !== 'undefined') {
+
+            this.connectionType = 'blockchain';
 
             web3 = new Web3(web3.currentProvider);
 
@@ -17,11 +31,19 @@ export default class BlockchainController {
 
         } else {
 
-            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+            this.connectionType = 'websocket';
+   
         }
 
     }
 
+/*
+    Get connection type
+*/
+
+    getConnectionType(cb){
+        cb(this.connectionType);
+    }
 
 /*
  Message
@@ -29,73 +51,124 @@ export default class BlockchainController {
 
     getMessage(cb){
 
-        CONTRACT.message.call((err, res) => {
-            cb(res);
-        });
+        if(this.connectionType==='websocket'){
+
+            this.socket.on('message', (message) => {
+                return cb(message);
+            });
+
+        }else{
+            
+            CONTRACT.message.call((err, res) => {
+
+                cb(res);
+    
+            }); 
+
+        }
 
     }
 
     getPrice(cb){
 
-        CONTRACT.price.call((err, res) => {
-            cb(res);
-        });
+        if(this.connectionType==='websocket'){
+
+            this.socket.on('price', (price) => {
+                return cb(price);
+            });
+
+        }else{
+
+            CONTRACT.price.call((err, res) => {
+                cb(res);
+            });
+
+        }
 
     }
 
     getAuthor(cb){
+        
+        if(this.connectionType==='websocket'){
 
-        CONTRACT.author.call((err, res) => {
-            cb(res);
-        });
+            this.socket.on('author', (author) => {
+                return cb(author);
+            });
+
+        }else{
+
+            CONTRACT.author.call((err, res) => {
+                cb(res);
+            });
+        
+        }
 
     }
 
     setMessage(message, price, cb){
 
-        const data = {
-            from: web3.eth.coinbase,
-            to: CONTRACT_ADDRESS,
-            value: price,
-            gasPrice: web3.toWei(0.00000001,'ether')
-        };
+        if(this.connectionType==='websocket'){
 
-        CONTRACT.setMessage.sendTransaction(message, data, (err, res) => {
+            /* this.socket.on('message', (message) => {
+                return cb(message);
+            }); */
 
-            //console.log('data')
+        }else{
 
-            //console.log(data)   
+            const data = {
+                from: web3.eth.coinbase,
+                to: CONTRACT_ADDRESS,
+                value: price,
+                gasPrice: web3.toWei(0.00000001,'ether')
+            };
 
-            //console.log('transactionHash:'+res)
+            CONTRACT.setMessage.sendTransaction(message, data, (err, res) => {
 
-            const transactionHash = res;
-            
-            let filter = web3.eth.filter("latest");
+                //console.log('data')
 
-            filter.watch((error, result) => {
+                //console.log(data)   
 
-                //console.log('filter watching:'+result)
+                //console.log('transactionHash:'+res)
 
-                web3.eth.getTransactionReceipt(transactionHash, (err, res) => {
+                const transactionHash = res;
+                
+                let filter = web3.eth.filter("latest");
 
-                    if(err) return cb(err);
+                filter.watch((error, result) => {
 
-                    //console.log('getTransactionReceipt:'+res)
+                    //console.log('filter watching:'+result)
 
-                    if(res){
+                    web3.eth.getTransactionReceipt(transactionHash, (err, res) => {
 
-                        //console.log('transcation mined')
-                        filter.stopWatching();
-                        cb(message);
-                        
-                    }else{
-                        //console.log('transcation pending')
-                    }
+                        if(err) return cb(err);
+
+                        //console.log('getTransactionReceipt:'+res)
+
+                        if(res){
+
+                            //Also write msg server for non blockchain connections
+                            this.socket.emit('setMessage', {
+                                message: message,
+                                price: price.toNumber()+1000000000000000,
+                                author: web3.eth.coinbase
+                            });
+
+                            //console.log('transcation mined')
+                            filter.stopWatching();
+                            cb(message);
+                            
+                        }else{
+                            //console.log('transcation pending')
+                        }
+
+                    });
 
                 });
 
             });
-        });
+
+        }    
+
     }
 
 

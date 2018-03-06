@@ -2,18 +2,29 @@
 const init = {
   message: '',
   price: 0,
-  author: 0
+  author: 0,
+  connectionType: ''
 };
 
 export default function (state = init, action) {
 
   switch(action.type){
 
+    case "RECEIVE_CONENCTION_TYPE":
+      return {
+        message: state.message,
+        price: state.price,
+        author: state.author,
+        connectionType: action.payload,
+      }
+    break;
+
     case "RECEIVE_MESSAGE":
       return {
         message: action.payload,
         price: state.price,
-        author: state.author
+        author: state.author,
+        connectionType: state.connectionType
       }
     break;
 
@@ -21,7 +32,8 @@ export default function (state = init, action) {
     return {
       message: state.message,
       price: action.payload,
-      author: state.author
+      author: state.author,
+      connectionType: state.connectionType
     }
     break;
 
@@ -29,7 +41,8 @@ export default function (state = init, action) {
     return {
       message: state.message,
       price: state.price,
-      author: action.payload
+      author: action.payload,
+      connectionType: state.connectionType
     }
   break;
 

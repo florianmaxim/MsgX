@@ -2,11 +2,16 @@ import BlockchainController from '../controllers/controller-blockchain';
 
 const Blockchain = new BlockchainController();
 
+let connected = false;
+
 const getMessage = () => {
 
   return (dispatch) => {
 
-    Blockchain.connect();
+    if(!connected){
+      Blockchain.connect();
+      connected = true;
+    }
 
     Blockchain.getMessage((msg) => {
 
@@ -18,18 +23,36 @@ const getMessage = () => {
   }
 } 
 
+const getConnectionType = () => {
+
+  return (dispatch) => {
+
+    if(!connected){
+      Blockchain.connect();
+      connected = true;
+    }    
+
+    Blockchain.getConnectionType((type) => {
+
+      dispatch({type: "RECEIVE_CONENCTION_TYPE", payload: type})
+
+    })
+  }
+}
+
 
 const getPrice = () => {
 
   return (dispatch) => {
 
-    Blockchain.connect();    
+    if(!connected){
+      Blockchain.connect();
+      connected = true;
+    }    
 
-    Blockchain.getPrice((msg) => {
+    Blockchain.getPrice((price) => {
 
-      //console.log(msg)
-
-      dispatch({type: "RECEIVE_PRICE", payload: msg.toNumber()})
+      dispatch({type: "RECEIVE_PRICE", payload: price})
 
     })
   }
@@ -40,13 +63,14 @@ const getAuthor = () => {
 
   return (dispatch) => {
 
-    Blockchain.connect();    
+    if(!connected){
+      Blockchain.connect();
+      connected = true;
+    }    
 
-    Blockchain.getAuthor((msg) => {
+    Blockchain.getAuthor((author) => {
 
-      //console.log(msg)
-
-      dispatch({type: "RECEIVE_AUTHOR", payload: msg})
+      dispatch({type: "RECEIVE_AUTHOR", payload: author})
 
     })
 
@@ -59,7 +83,10 @@ const setMessage = (message, price) => {
 
   return (dispatch) => {
 
-    Blockchain.connect();    
+    if(!connected){
+      Blockchain.connect();
+      connected = true;
+    }   
 
     Blockchain.setMessage(message, price, (msg) => {
 
@@ -73,4 +100,4 @@ const setMessage = (message, price) => {
 
 }
 
-export {getMessage, getPrice, getAuthor, setMessage}
+export {getConnectionType, getMessage, getPrice, getAuthor, setMessage}
