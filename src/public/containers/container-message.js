@@ -415,7 +415,7 @@ class ContainerMessage extends React.Component {
   }
 
   renderPrice(){
-    return `${((this.state.price/1000000000000000000)*currencies[this.state.currency][1]).toFixed(4)}`;
+    return `${((this.state.price/1000000000000000000)*currencies[this.state.currency][1]).toFixed(5)}`;
   }
 
   render() {
