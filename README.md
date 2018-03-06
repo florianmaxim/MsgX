@@ -26,9 +26,9 @@
  <img align="center" src="resources/screen-4.jpg" />
 </p>
 
-##  <p align="center">How to connect to the blockchain?</p>
+#  <p align="center">How to connect to the blockchain?</p>
 
-# <p align="center">Desktop</p>
+## <p align="center">Desktop</p>
 
 ## <p align="center">On desktop devices the great Fox and his Metamask provide you access to the network :</p>
 
@@ -38,7 +38,7 @@
     </a>
 </p>
 
-# <p align="center"> Set up and browse to <a href="https://msg.gold">msg.gold</a></p>
+# <p align="center"> Set up and browse to <a href="https://msg.gold">https://msg.gold</a>.</p>
 
 # <p align="center">Mobile</p>
 
@@ -56,4 +56,4 @@
     </a>
 </p>
 
-# <p align="center"> Set up and browse to <a href="https://msg.gold">msg.gold</a></p>
+# <p align="center"> Set up and browse to <a href="https://msg.gold">https://msg.gold</a>.</p>
