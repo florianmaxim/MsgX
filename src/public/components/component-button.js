@@ -56,6 +56,8 @@ const Button = styled.div`
         background: linear-gradient(to bottom, rgba(253,215,0,1) 0%, rgba(241,232,103,1) 100%);
 
       }
+
+    overflow: hidden;
 `
 export default class ComponentButton extends React.Component {
 

@@ -13,9 +13,22 @@ import ComponentLogo   from '../components/component-logo';
 import styled from 'styled-components';
 import { setTimeout } from 'timers';
 
+function getStringFromTimestamp(UNIX_timestamp){
+  var a = new Date(UNIX_timestamp * 1000);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var year = a.getYear();
+  var month = months[a.getMonth()];
+  var date = a.getDate();
+  var hour = a.getHours();
+  var min = a.getMinutes();
+  var sec = a.getSeconds();
+  var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+  return time;
+}
+
 const Outer = styled.div`
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 
   box-sizing: border-box;
   border: 0px solid gold;
@@ -81,9 +94,8 @@ const NotificationsText = styled.div`
 
   @media(orientation: portrait){
 
-    margin: 5vh;
-    margin-left: 2.5vh;
-    margin-right: 2.5vh;
+    margin: 2.5vh;
+    margin-left:4vh;
 
   }
 
@@ -120,10 +132,10 @@ const Textarea = styled.textarea`
   margin: 0;
   padding: 0;
 
-  padding-top: 2.5vh;
+  padding-top: 1.5vh;
 
   width: 100%;
-  height: 100%;
+  min-height: 50vh;
 
   background: transparent;
 
@@ -152,16 +164,44 @@ const Textarea = styled.textarea`
   0 5px 10px rgba(0,0,0,.2);
 
   box-sizing: border-box;
-  border: 0px solid blue;
+  border: 5px solid blue;
+  border:0;
 `;
 
-const PriceWrapper = styled.div`
+const ComponentCounter = styled.div`
 
-  position: absolute;
+  margin-top: 2.5vh;
+  
+  font-family: Roboto;
+  font-size: 10vh;
+  color: white;
+  text-shadow: 0px -0px 50px rgba(255, 215, 0, .75);
 
-  bottom: 15vh;
-  left: 50vw;
-  transform: translate3d(-50%,0,0);
+  text-align: center;
+  resize: both;
+
+  overflow: hidden;
+  overflow-y: scroll;
+
+  outline: 0;
+
+  text-shadow: 0 1px 0 hsl(174,5%,80%),
+  1px 2px 0 hsl(174,5%,75%),
+  2px 3px 0 hsl(174,5%,70%),
+  3px 4px 0 hsl(174,5%,66%),
+  4px 5px 0 hsl(174,5%,64%),
+
+  0 0 5px rgba(0,0,0,.05),
+  0 1px 3px rgba(0,0,0,.2),
+  0 3px 5px rgba(0,0,0,.2),
+  0 5px 10px rgba(0,0,0,.2);
+
+  box-sizing: border-box;
+  //border: 5px solid blue;
+  border:0;
+`;
+
+const ComponentPriceWrapper = styled.div`
 
   display: flex;
   flex-direction: column;
@@ -189,13 +229,14 @@ const PriceWrapper = styled.div`
     text-align: right;
   }
 
+  box-sizing: border-box;
+  //border: 5px solid green;
+
 `;
 
+const ComponentPriceLine = styled.div`
 
-const Price = styled.div`
-
-  width: 95%;
-  height: 35px; 
+  width: 100%;
 
   cursor: pointer;
   user-select: none;
@@ -204,9 +245,12 @@ const Price = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+`;
 
-  h1{
-    margin:0;
+const ComponentPriceValue = styled.div`
+
+    width: 100%;
+    margin:12px;
     padding:0;
     
     font-family: Lato;
@@ -214,47 +258,44 @@ const Price = styled.div`
     font-weight: 600;
     
     color: black;
-  }
+
+    text-align: left;
 `;
 
-const Toggle = styled.div`
+const ComponentPriceCurrency = styled.div`
 
-  position: fixed;
-
-  height: 5vh;
-  
-  left: auto;
-  top: 2.5vw;
-  right: 2.5vw;
-  bottom: auto;
-
-  font-family: Roboto;
-  font-size: 7.5vh;
-  
-  color: white;
-  text-shadow: 0px -0px 50px rgba(255, 215, 0, .75);
-
-  text-shadow:
-  0 1px 0 hsl(174,5%,80%),
-  1px 2px 0 hsl(174,5%,75%),
-  2px 3px 0 hsl(174,5%,70%);
-
-  @media(orientation: portrait){
-    height: 5vh;
+    width: 100%;
+    margin:12px;
+    padding:0;
     
-    left: auto;
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 600;
+    
+    color: black;
 
-    top: 5vw;
-    right: 5vw;
-
-    bottom: auto;
-  }
-
-  transform: translate3d(0%,-50%,0);
-
-  cursor: pointer;
-  user-select: none;
+    text-align: right;
 `;
+
+const ComponentDate = styled.div`
+
+    width: 100%;
+    margin:12px;
+
+    margin-left:0;
+    margin-right:0;
+    
+    padding:0;
+    
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 600;
+    
+    color: black;
+
+    text-align: center;
+`;
+
 
 const currencies = [
   ["EUR", 700],
@@ -267,11 +308,18 @@ class ContainerMessage extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      message: `${this.props.message.message}`,
-      readonly: false,
+
+      count: 0,
+
+      message: '',
+      author: '',
+      date: 0,
+      price: 0,
+
       caption: `${config.buttonCaption}`,
       currency: 0,
-      toggle: 0
+
+      startedTyping: false
     }
   }
 
@@ -279,11 +327,15 @@ class ContainerMessage extends React.Component {
 
     this.props.getConnectionType();
 
+    this.props.getCount();    
     this.props.getMessage();
-    this.props.getPrice();
     this.props.getAuthor();
+    this.props.getPrice();
+    this.props.getStep();
+    this.props.getDate();
 
     setInterval(()=>{
+      if(!this.state.startedTyping)
       this.props.setNotification({
         message: config.notifications.dontHesitate[Math.floor(Math.random()*config.notifications.dontHesitate.length)],
         url: null
@@ -311,48 +363,59 @@ class ContainerMessage extends React.Component {
     }
 
     this.setState({
-      message: `${props.message.message}`,
-      caption: `${props.message.connectionType==='websocket'?'(not connected)':`${config.buttonCaption}`}`
+      count: props.message.count,
+
+      message: `${String(props.message.message)}`,
+      author: String(props.message.author),
+      date: Date(props.message.date),
+      price: Number(props.message.price),
+
+      caption: `${String(this.state.count)}. (${String(props.message.author).substr(0,12)}...)` 
     })
 
   }
 
-  handleOnSubmit(){
+  handleOnClickButton(){
     if(this.props.message.connectionType==='blockchain'){
-      this.props.setMessage(this.state.message, this.props.message.price)
-    }else{
-      this.props.setNotification(config.notifications.notConnected);
-    }
-  }
 
-  _handleKeyPress(e){
-    if (e.key === 'Enter') {
-      this.handleOnSubmit()
+      this.props.setMessage(this.state.message, this.props.message.price)
+
+    }else{
+      window.open(`https://ropsten.etherscan.io/address/${this.props.message.author}`,"_blank")
     }
   }
 
   handleChange(event) {
-    this.setState({message: event.target.value});
+
+    this.setState({
+      startedTyping: true,
+      message: event.target.value,
+      count: Number(this.props.message.count)+1,
+    });
+
+    //If we are on the blockchain we are able to set the next msg...
+    if(this.props.message.connectionType==='blockchain'){
+
+      console.log(this.props.message.price+'+'+this.props.message.step+'='+(Number(this.props.message.price)+Number(this.props.message.step)));
+
+      this.setState({
+
+        //caption: `${String(this.state.count)}. (${web3.eth.coinbase.toString().substr(0,8)}...`
+        caption: `send (${web3.eth.coinbase.toString().substr(0,8)}...)`,
+
+        date: new Date(),
+
+        price: Number(this.props.message.price)+Number(this.props.message.step)
+      })
+    }  
   }
 
   toggleCurrency(){
     this.setState({currency:this.state.currency<currencies.length-1?this.state.currency+1:0})
   }
 
-  toggle(){
-    this.setState({
-      toggle: this.state.toggle<1?this.state.toggle+1:0
-    });
-
-    switch(this.state.toggle){
-      case 0:
-        this.setState({message: this.props.message.message})
-      break;
-      case 1:
-        this.setState({message: this.props.message.author})
-      break;
-    }
-
+  renderPrice(){
+    return `${((this.state.price/1000000000000000000)*currencies[this.state.currency][1]).toFixed(4)}`;
   }
 
   render() {
@@ -383,29 +446,31 @@ class ContainerMessage extends React.Component {
             ✖
             </NotificationsClose>
           </Notifications>
-
             <Textarea
                value={`${this.state.message}`}
                onChange={(event) => {this.handleChange(event)}} 
             />
 
-          <PriceWrapper>
+          <ComponentPriceWrapper>
 
-            <Price onClick={() => this.toggleCurrency()}>
+            <ComponentPriceLine onClick={() => this.toggleCurrency()}>
 
-              <h1>{`${((this.props.message.price/1000000000000000000)*currencies[this.state.currency][1]).toFixed(2)}`}</h1>
-              <h1>{`${currencies[this.state.currency][0]} ▼`}</h1>
+              <ComponentPriceValue>{this.renderPrice()}</ComponentPriceValue>
+              <ComponentPriceCurrency>{`${currencies[this.state.currency][0]} ▼`}</ComponentPriceCurrency>
               
-            </Price>
-
-            <ComponentButton 
-              caption={this.state.caption}
-              onClick={() => this.handleOnSubmit()}   
-            />
+            </ComponentPriceLine>
             
-          </PriceWrapper>
+            <ComponentButton 
+              caption={this.state.caption} 
+              onClick={() => this.handleOnClickButton()}   
+            />
+
+            <ComponentDate>{this.state.date.toString().substr(0,24)}</ComponentDate>
+
+          </ComponentPriceWrapper>
 
           <ComponentLogo/>
+
       </Outer>
     );
   }
@@ -427,9 +492,12 @@ function actions(dispatch){
 
     getConnectionType: actionsMessage.getConnectionType,
 
-    getMessage: actionsMessage.getMessage,
-    getPrice:   actionsMessage.getPrice,    
+    getCount: actionsMessage.getCount,
+    getMessage: actionsMessage.getMessage,    
     getAuthor:  actionsMessage.getAuthor,
+    getPrice:   actionsMessage.getPrice,  
+    getStep:   actionsMessage.getStep,          
+    getDate:    actionsMessage.getDate,    
 
     setMessage:  actionsMessage.setMessage,
 

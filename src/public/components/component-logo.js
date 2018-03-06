@@ -5,27 +5,14 @@ import styled, {keyframes} from 'styled-components';
 import * as config from '../../../config.json';
 
 const LogoContainer = styled.div`
-    z-index:5;
-
-    position:fixed;
-
-    left:3vw;
-    bottom:3vw;
-
-    @media(orientation: portrait){
-      top:auto;
-      bottom:4vh;
-
-      left:50vw;
-
-      transform: translateX(-50%);
-      flex-direction: column;
-    }
+  margin-top: 2.5vh;
     
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  border: 0px solid red;
 `;
 
 const LogoOuter = styled.div`

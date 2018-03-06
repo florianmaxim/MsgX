@@ -1,6 +1,7 @@
 {
-    "contractABI": [{"constant":false,"inputs":[{"name":"newMessage","type":"string"}],"name":"setMessage","outputs":[{"name":"","type":"string"}],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"kill","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"price","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"author","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"message","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"step","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}],
-    "contractAddress": "0x5c5c1db807b00544f3e81f56a65e62281cb2923f",
+    "contractABI": [{"constant":true,"inputs":[],"name":"count","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"date","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"newMessage","type":"string"}],"name":"setMessage","outputs":[{"name":"","type":"string"}],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"kill","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"price","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"author","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"message","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"step","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}],
+
+    "contractAddress": "0x7356fb95dd22acdcb7b1319b48e201a03f7e682e",
 
     "log": true,
 
@@ -22,12 +23,15 @@
     "logoURL": "https://florianmaxim.com",
     
     "notifications": {
-        "notConnected": "You are not connected to the blockchain. Learn how! 🎓",
+
+        "notConnected": "You are not connected to the blockchain. ➝ Learn how! 🎓",
+
         "dontHesitate": [
-            "🎉 Set a golden message to the internet now! (Before is gets more expensive)",
+            "🎉 Set a golden message to the internet now! It gets more expensive every time.",
             "✨ Send a golden msg to the internet now! It will be saved on the blockchain.",
             "🔥 Any comment on the internet? Drop a line and it will be saved for now and forever."
         ],
+
         "lowBalance": "💸 You don't have enough money to set up that message!"
         
     },

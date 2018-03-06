@@ -58,6 +58,40 @@ const getPrice = () => {
   }
 }
 
+const getStep = () => {
+
+  return (dispatch) => {
+
+    if(!connected){
+      Blockchain.connect();
+      connected = true;
+    }    
+
+    Blockchain.getStep((step) => {
+
+      dispatch({type: "RECEIVE_STEP", payload: step})
+
+    })
+  }
+}
+
+const getCount = () => {
+
+  return (dispatch) => {
+
+    if(!connected){
+      Blockchain.connect();
+      connected = true;
+    }    
+
+    Blockchain.getCount((count) => {
+
+      dispatch({type: "RECEIVE_COUNT", payload: count})
+
+    })
+  }
+}
+
 
 const getAuthor = () => {
 
@@ -71,6 +105,25 @@ const getAuthor = () => {
     Blockchain.getAuthor((author) => {
 
       dispatch({type: "RECEIVE_AUTHOR", payload: author})
+
+    })
+
+  }
+
+}
+
+const getDate = () => {
+
+  return (dispatch) => {
+
+    if(!connected){
+      Blockchain.connect();
+      connected = true;
+    }    
+
+    Blockchain.getDate((date) => {
+
+      dispatch({type: "RECEIVE_DATE", payload: date})
 
     })
 
@@ -100,4 +153,4 @@ const setMessage = (message, price) => {
 
 }
 
-export {getConnectionType, getMessage, getPrice, getAuthor, setMessage}
+export {getConnectionType, getMessage, getCount, getPrice, getStep, getAuthor, getDate, setMessage}

@@ -2,8 +2,6 @@ import * as config from '../../../config.json';
 
 import io from 'socket.io-client';
 
-
-
 const CONTRACT_ADDRESS = config.contractAddress;
 const CONTRACT_ABI = config.contractABI;
 
@@ -87,6 +85,42 @@ export default class BlockchainController {
 
     }
 
+    getStep(cb){
+
+        if(this.connectionType==='websocket'){
+
+            this.socket.on('step', (step) => {
+                return cb(step);
+            });
+
+        }else{
+
+            CONTRACT.step.call((err, res) => {
+                cb(res);
+            });
+
+        }
+
+    }
+
+    getCount(cb){
+
+        if(this.connectionType==='websocket'){
+
+            this.socket.on('count', (count) => {
+                return cb(count);
+            });
+
+        }else{
+
+            CONTRACT.count.call((err, res) => {
+                cb(res);
+            });
+
+        }
+
+    }
+
     getAuthor(cb){
         
         if(this.connectionType==='websocket'){
@@ -98,6 +132,24 @@ export default class BlockchainController {
         }else{
 
             CONTRACT.author.call((err, res) => {
+                cb(res);
+            });
+        
+        }
+
+    }
+
+    getDate(cb){
+        
+        if(this.connectionType==='websocket'){
+
+            this.socket.on('date', (author) => {
+                return cb(author);
+            });
+
+        }else{
+
+            CONTRACT.date.call((err, res) => {
                 cb(res);
             });
         
@@ -125,9 +177,6 @@ export default class BlockchainController {
             CONTRACT.setMessage.sendTransaction(message, data, (err, res) => {
 
                 //console.log('data')
-
-                //console.log(data)   
-
                 //console.log('transactionHash:'+res)
 
                 const transactionHash = res;
@@ -149,8 +198,8 @@ export default class BlockchainController {
                             //Also write msg server for non blockchain connections
                             this.socket.emit('setMessage', {
                                 message: message,
-                                price: price.toNumber()+1000000000000000,
-                                author: web3.eth.coinbase
+                                price: price.toNumber(),
+                                author: web3.eth.coinbase.toString()
                             });
 
                             //console.log('transcation mined')
