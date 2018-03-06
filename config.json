@@ -8,7 +8,7 @@
     
     "info": {
         "name": "MsgX",
-        "slogan": "ÐApp To Set A Golden Message Until Someone Pays A Higher Price"
+        "slogan": "Send A Golden Message Until Someone Pays A Higher Price"
     },
 
     "version": {
@@ -21,5 +21,16 @@
     "logoEnabled": true,
     "logoURL": "https://florianmaxim.com",
     
-    "learnHow": "You are not connected to the blockchain. Learn how! 🎓"
+    "notifications": {
+        "notConnected": "You are not connected to the blockchain. Learn how! 🎓",
+        "dontHesitate": [
+            "🎉 Set a golden message to the internet now! (Before is gets more expensive)",
+            "✨ Send a golden msg to the internet now! It will be saved on the blockchain.",
+            "🔥 Any comment on the internet? Drop a line and it will be saved for now and forever."
+        ],
+        "lowBalance": "💸 You don't have enough money to set up that message!"
+        
+    },
+
+    "buttonCaption": "set msg"
 }

@@ -17,6 +17,7 @@ injectGlobal`
 
   body {
     margin: 0;
+    padding: 0;
 
     background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
     radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
@@ -40,18 +41,4 @@ injectGlobal`
       width:0px;
       height:0;
   }
-`;
-
-export const Outer = styled.div`
-  width: 100vw;
-  height: 100vh;
-
-  box-sizing: border-box;
-  border: 0px solid gold;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  box-shadow: 0px 0px 50px rgba(255, 255, 255, 1);  
 `;

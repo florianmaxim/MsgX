@@ -4,10 +4,4 @@ import Routes from './Routes'
 
 import {Outer} from './App_'
 
-export default () =>
-
-  <Outer>
-
-    <Routes/>
-
-  </Outer>
+export default () => <Routes/>

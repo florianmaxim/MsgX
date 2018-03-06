@@ -3,7 +3,7 @@ const init = {
   message: '',
   price: 0,
   author: 0,
-  connectionType: ''
+  connectionType: null
 };
 
 export default function (state = init, action) {

@@ -5,46 +5,125 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 import * as actionsMessage from '../actions/actions-message';
+import * as actionsNotifications from '../actions/actions-notifications';
 
 import ComponentButton from '../components/component-button';
 import ComponentLogo   from '../components/component-logo';
 
 import styled from 'styled-components';
+import { setTimeout } from 'timers';
 
 const Outer = styled.div`
   width: 100vw;
   height: 100vh;
+
   box-sizing: border-box;
   border: 0px solid gold;
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
 
   box-shadow: 0px 0px 50px rgba(255, 255, 255, 1);  
 `;
 
-const Wrapper = styled.div`
 
-  position: absolute;
+const Notifications = styled.div`
 
-  left: 0;
-  top: 0;
+  transition: 0.5s all;
+  //transition-delay: 0.5s;
 
-  transition: 1s all;
+  margin:0;
+  padding:0;
 
+  width: 100%;
+
+  background: red;
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  @media(orientation: portrait){
+
+  }
+
+  box-sizing: border-box;
+  //border: 5px solid green;
+
+`;
+
+const NotificationsText = styled.div`
+
+  transition: 0.125s all;
+  transition-delay: 0s; 
+
+  margin: 2.5vw;
+  padding:0;
+
+  width: 85vw;
+  
+  font-family: Roboto;
+  font-size: 2.5vh;
+  font-weight: 600;
+  letter-spacing: .125vh;
+  
+  color: white;
+  text-shadow: 0px -0px 5px rgba(255, 255, 255, .5);
+  text-transform: uppercase;
+
+  text-align: left;
+
+  box-sizing: border-box;
+  //border: 5px solid green;
+
+  @media(orientation: portrait){
+
+    margin: 5vh;
+    margin-left: 2.5vh;
+    margin-right: 2.5vh;
+
+  }
+
+`;
+
+const NotificationsClose = styled.div`
+
+  transition: 0.125s all;
+  transition-delay: 0s; 
+
+  font-family: Roboto;
+  font-size: 2.5vh;
+  letter-spacing: .125vh;
+
+  font-weight: 600;
+  
+  color: white;
+
+  cursor: pointer;
+  user-select: none;
+
+  box-sizing: border-box;
+  //border: 5px solid blue;
+
+  @media(orientation: portrait){
+
+    margin-right: 2.5vh;
+
+  }
 `;
 
 const Textarea = styled.textarea`
 
-  position: relative;
-  
-  margin-left: 5vw;
-  width: 90vw;
-  
-  margin-top: 5vh;
-  height: 90vh;
+  margin: 0;
+  padding: 0;
+
+  padding-top: 2.5vh;
+
+  width: 100%;
+  height: 100%;
 
   background: transparent;
 
@@ -59,7 +138,6 @@ const Textarea = styled.textarea`
   overflow: hidden;
   overflow-y: scroll;
 
-  border: 0;
   outline: 0;
 
   text-shadow: 0 1px 0 hsl(174,5%,80%),
@@ -73,6 +151,8 @@ const Textarea = styled.textarea`
   0 3px 5px rgba(0,0,0,.2),
   0 5px 10px rgba(0,0,0,.2);
 
+  box-sizing: border-box;
+  border: 0px solid blue;
 `;
 
 const PriceWrapper = styled.div`
@@ -111,90 +191,6 @@ const PriceWrapper = styled.div`
 
 `;
 
-const HintClose = styled.div`
-
-  transition: 0.25s all;
-
-  z-index: 22;
-  position: fixed;
-  right: 1.25vh;
-  top: 1.25vh;
-
-  font-family: Roboto;
-  font-size: 2.5vh;
-  letter-spacing: .125vh;
-
-  font-weight: 600;
-  
-  color: white;
-
-  cursor: pointer;
-  user-select: none;
-`;
-
-const Hint = styled.div`
-
-  transition: 0.25s all;
-
-  position: fixed;
-
-  top: 0;
-  left: 0;
-
-  margin:0;
-  padding:0;
-
-  width: 100vw;
-  height: 0vh;
-
-  background: red;
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  a{
-    margin: 10vw;
-    
-    padding:0;
-
-    width: 85vw;
-    
-    font-family: Roboto;
-    font-size: 2.5vh;
-    letter-spacing: .125vh;
-
-    font-weight: 600;
-    
-    color: white;
-    text-shadow: 0px -0px 5px rgba(255, 255, 255, .5);
-
-    //text-decoration: underline;
-    text-transform: uppercase;
-
-    text-align: left;
-
-    @media(orientation: portrait){
-
-      margin:0;
-      padding:0;
-      
-      font-family: Roboto;
-      font-size: 2.5vh;
-      //letter-spacing: .125vh;
-
-    }
-
-  }
-
-  @media(orientation: portrait){
-
-    height: 17.5vh;
-
-  }
-
-`;
 
 const Price = styled.div`
 
@@ -273,10 +269,9 @@ class ContainerMessage extends React.Component {
     this.state = {
       message: `${this.props.message.message}`,
       readonly: false,
-      caption: `buy`,
+      caption: `${config.buttonCaption}`,
       currency: 0,
-      toggle: 0,
-      closed: false
+      toggle: 0
     }
   }
 
@@ -287,18 +282,47 @@ class ContainerMessage extends React.Component {
     this.props.getMessage();
     this.props.getPrice();
     this.props.getAuthor();
+
+    setInterval(()=>{
+      this.props.setNotification({
+        message: config.notifications.dontHesitate[Math.floor(Math.random()*config.notifications.dontHesitate.length)],
+        url: null
+      })    
+    }, 30000)
+
   }
 
   componentWillReceiveProps(props){
+
+    if(!this.props.message.connectionType){
+
+      let notification = config.notifications.dontHesitate[Math.floor(Math.random()*config.notifications.dontHesitate.length)]
+      let url = 'https://github.com/florianmaxim/msgx';
+
+      if(props.message.connectionType==='websocket'){
+        notification = config.notifications.notConnected;
+      }
+      
+      this.props.setNotification({
+        message:notification,
+        url: url
+      });
+
+    }
+
     this.setState({
       message: `${props.message.message}`,
-      caption: `${props.message.connectionType==='websocket'?'(not connected)':'buy'}`
+      caption: `${props.message.connectionType==='websocket'?'(not connected)':`${config.buttonCaption}`}`
     })
+
   }
 
   handleOnSubmit(){
-    if(this.props.message.connectionType==='blockchain')
-    this.props.setMessage(this.state.message, this.props.message.price)
+    if(this.props.message.connectionType==='blockchain'){
+      this.props.setMessage(this.state.message, this.props.message.price)
+    }else{
+      this.props.setNotification(config.notifications.notConnected);
+    }
   }
 
   _handleKeyPress(e){
@@ -335,35 +359,36 @@ class ContainerMessage extends React.Component {
     return (
       <Outer>
            
-           <HintClose
-           style={{
-            display: this.props.message.connectionType==='websocket'&&this.state.closed!==true?'block':'none',                           
-           }}
-            onClick={()=>this.setState({closed: true})}
-           >✖</HintClose>
-           <Hint
+          
+          <Notifications
             style={{
-              height: this.state.closed!==true?'17.5vh':'0',
-              opacity: this.state.closed!==true?'1':'0',                            
-              display: this.props.message.connectionType==='websocket'?'flex':'none'
-            }}
-           >
-              <a href="https://github.com/florianmaxim/msgx" target="blank">
-              You are not connected to the blockchain. → Learn how 🎓
-              </a>
-            </Hint>
-
-          <Wrapper
-            style={{
-              marginTop: this.props.message.connectionType==='websocket'&&this.state.closed!==true?'20vh':'0'
+              height: this.props.notifications.closed?'0':'20vh',
             }}
           >
+           <a href={`${this.props.notifications.url}`} target="blank">
+            <NotificationsText
+              style={{
+                opacity: this.props.notifications.closed?'0':'1'
+              }}
+            >
+              {this.props.notifications.message}
+            </NotificationsText>
+            </a>
+            <NotificationsClose
+              style={{
+                opacity: this.props.notifications.closed?'0':'1'
+              }}
+              onClick={()=>this.props.closeNotification()}
+            >
+            ✖
+            </NotificationsClose>
+          </Notifications>
+
             <Textarea
                value={`${this.state.message}`}
                onChange={(event) => {this.handleChange(event)}} 
             />
-          </Wrapper>
-          
+
           <PriceWrapper>
 
             <Price onClick={() => this.toggleCurrency()}>
@@ -390,7 +415,8 @@ class ContainerMessage extends React.Component {
 function props(state) {
 
   return {
-    message: state.message
+    message: state.message,
+    notifications: state.notifications
   };
 
 }
@@ -405,7 +431,10 @@ function actions(dispatch){
     getPrice:   actionsMessage.getPrice,    
     getAuthor:  actionsMessage.getAuthor,
 
-    setMessage:  actionsMessage.setMessage
+    setMessage:  actionsMessage.setMessage,
+
+    setNotification:   actionsNotifications.setNotification,
+    closeNotification: actionsNotifications.closeNotification  
 
   }, dispatch);
 

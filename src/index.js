@@ -43,11 +43,11 @@ app.get('*', (req, res) => {
     io.sockets.emit('price',   message.price)
     io.sockets.emit('author',  message.author)
 
-    console.log('Websocket: connected.');
+    //console.log('Websocket: connected.');
 
     socket.on('setMessage', (newMessage) => {
 
-      console.log('Websocket: Received new message: '+JSON.stringify(newMessage));
+      //console.log('Websocket: Received new message: '+JSON.stringify(newMessage));
 
       message = newMessage;
 
@@ -89,7 +89,7 @@ app.get('*', (req, res) => {
   }else{
 
     res.header('Content-Type', 'text/html');
-    res.write(`<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="shortcut icon" type="image/x-icon" href="/static/favicon.png"><title>Buy A Golden Message To The Internet</title>${styles}</head><body><div id="root">${html}</div><script src="/bundle.js"></script></body></html>`)
+    res.write(`<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="shortcut icon" type="image/x-icon" href="/static/favicon.png"><title>${config.info.slogan}</title>${styles}</head><body><div id="root">${html}</div><script src="/bundle.js"></script></body></html>`)
     res.end();
     
   }
