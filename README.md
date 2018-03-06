@@ -30,7 +30,7 @@
 
 ## <p align="center">Desktop</p>
 
-## <p align="center">On desktop devices the great Fox and his Metamask provide you access to the network :</p>
+### <p align="center">On desktop devices the great Fox and his Metamask provide you access to the network :</p>
 
 <p align="center">
     <a target="_blank" href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en">
@@ -40,9 +40,9 @@
 
 # <p align="center"> Set up and browse to <a href="https://msg.gold">https://msg.gold</a>.</p>
 
-# <p align="center">Mobile</p>
+## <p align="center">Mobile</p>
 
-## <p align="center">On mobile devices Chiper Browser grants you access to the blockchain :</p>
+### <p align="center">On mobile devices Chiper Browser grants you access to the blockchain :</p>
 
 <p align="center">
 <img width="25%"  src="resources/logo-cipher.png"></img>
