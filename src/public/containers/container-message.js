@@ -70,6 +70,8 @@ const ComponentNotificationsWrapper = styled.div`
 
 const NotificationsText = styled.div`
 
+  width: 80vw;
+
   transition: 0.125s all;
   transition-delay: 0s; 
 
@@ -90,10 +92,6 @@ const NotificationsText = styled.div`
   text-align: left;
 
   @media(orientation: portrait){
-
-    margin: 2.5vh;
-    margin-left:4vh;
-
   }
 
   box-sizing: border-box;
@@ -103,12 +101,15 @@ const NotificationsText = styled.div`
 
 const NotificationsClose = styled.div`
 
+  width: 20vw;
+
   transition: 0.125s all;
   transition-delay: 0s; 
 
   font-family: Roboto;
   font-size: 2.5vh;
   letter-spacing: .125vh;
+  text-align: center;
 
   font-weight: 600;
   
@@ -246,7 +247,7 @@ const ComponentPriceLine = styled.div`
 
   box-sizing: border-box;
   border: ${config.dev.helperBorder} solid blue;
-  
+
 `;
 
 const ComponentPriceValue = styled.div`

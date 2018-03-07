@@ -40,7 +40,7 @@
 
     "dev": {
 
-        "helperBorder": "5px"
+        "helperBorder": "0px"
     
     }
 }
