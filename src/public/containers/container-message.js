@@ -13,7 +13,6 @@ import ComponentButton from '../components/component-button';
 import ComponentLogo   from '../components/component-logo';
 
 import styled from 'styled-components';
-
 const ComponentNotificationsWrapper = styled.div`
 
   transition: 0.5s all;
@@ -137,7 +136,6 @@ const ComponentTextarea = styled.textarea`
 
   box-sizing: border-box;
   border: ${config.dev.helperBorder} solid blue;
-
 `;
 
 const ComponentPriceWrapper = styled.div`
@@ -184,55 +182,71 @@ const ComponentPriceLine = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  box-sizing: border-box;
+  border: ${config.dev.helperBorder} solid blue;
+
 `;
 
 const ComponentPriceValue = styled.div`
 
-    width: 100%;
-    margin:12px;
-    padding:0;
-    
-    font-family: Lato;
-    font-size: 18px;
-    font-weight: 600;
-    
-    color: black;
+  width: 100%;
+  margin:12px;
+  padding:0;
+  
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: 600;
+  
+  color: black;
 
-    text-align: left;
+  text-align: left;
+
+  box-sizing: border-box;
+  border: ${config.dev.helperBorder} solid green;  
+
 `;
 
 const ComponentPriceCurrency = styled.div`
 
-    width: 100%;
-    margin:12px;
-    padding:0;
-    
-    font-family: Lato;
-    font-size: 18px;
-    font-weight: 600;
-    
-    color: black;
+  width: 100%;
+  margin:12px;
+  padding:0;
+  
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: 600;
+  
+  color: black;
 
-    text-align: right;
+  text-align: right;
+
+  box-sizing: border-box;
+  border: ${config.dev.helperBorder} solid red;
+
 `;
 
 const ComponentDate = styled.div`
 
-    width: 100%;
-    margin:12px;
+  width: 100%;
+  margin:12px;
 
-    margin-left:0;
-    margin-right:0;
-    
-    padding:0;
-    
-    font-family: Lato;
-    font-size: 18px;
-    font-weight: 600;
-    
-    color: black;
+  margin-left:0;
+  margin-right:0;
+  
+  padding:0;
+  
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: 600;
+  
+  color: black;
 
-    text-align: center;
+  text-align: center;
+
+  box-sizing: border-box;
+  border: ${config.dev.helperBorder} solid purple;
+
 `;
 
 
