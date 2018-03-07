@@ -7,6 +7,8 @@ import {connect} from 'react-redux';
 import * as actionsMessage from '../actions/actions-message';
 import * as actionsNotifications from '../actions/actions-notifications';
 
+import ComponentOuter from '../components/component-outer';
+
 import ComponentButton from '../components/component-button';
 import ComponentLogo   from '../components/component-logo';
 
@@ -27,7 +29,6 @@ const Outer = styled.div`
   border: ${config.dev.helperBorder} solid gold;
 `;
 
-
 const ComponentNotificationsWrapper = styled.div`
 
   transition: 0.5s all;
@@ -36,7 +37,7 @@ const ComponentNotificationsWrapper = styled.div`
   margin:0;
   padding:0;
 
-  width: 100%;
+  width: 100vw;
 
   background: red;
   
@@ -51,7 +52,6 @@ const ComponentNotificationsWrapper = styled.div`
 
   box-sizing: border-box;
   border: ${config.dev.helperBorder} solid green;
-
 `;
 
 const NotificationsText = styled.div`
@@ -61,41 +61,40 @@ const NotificationsText = styled.div`
   transition: 0.125s all;
   transition-delay: 0s; 
 
-  margin: 2.5vw;
+  margin: 5vw;
   padding:0;
-
-  width: 85vw;
   
   font-family: Roboto;
   font-size: 2.5vh;
   font-weight: 600;
   letter-spacing: .125vh;
+  text-align: left;
   
   color: white;
   text-shadow: 0px -0px 5px rgba(255, 255, 255, .5);
   text-transform: uppercase;
 
-  text-align: left;
-
   @media(orientation: portrait){
   }
 
   box-sizing: border-box;
-  border: ${config.dev.helperBorder} solid gold;
-
+  border: ${config.dev.helperBorder} solid green;
 `;
 
 const NotificationsClose = styled.div`
 
   width: 20vw;
 
+  margin: 0;
+  padding:0;
+  
   transition: 0.125s all;
   transition-delay: 0s; 
 
-  font-family: Roboto;
+  font-family: Open Sans;
   font-size: 2.5vh;
   letter-spacing: .125vh;
-  text-align: center;
+  text-align:center;
 
   font-weight: 600;
   
@@ -111,53 +110,22 @@ const NotificationsClose = styled.div`
   }
 
   box-sizing: border-box;
-  border: ${config.dev.helperBorder} solid gold;
-`;
-
-const Textarea = styled.textarea`
-
-  margin: 0;
-  padding: 0;
-
-  padding-top: 1.5vh;
-
-  width: 100%;
-  min-height: 50vh;
-
-  background: transparent;
-
-  font-family: Roboto;
-  font-size: 10vh;
-  color: white;
-  text-shadow: 0px -0px 50px rgba(255, 215, 0, .75);
-
-  text-align: center;
-  resize: both;
-
-  overflow: hidden;
-  overflow-y: scroll;
-
-  outline: 0;
-
-  text-shadow: 0 1px 0 hsl(174,5%,80%),
-  1px 2px 0 hsl(174,5%,75%),
-  2px 3px 0 hsl(174,5%,70%),
-  3px 4px 0 hsl(174,5%,66%),
-  4px 5px 0 hsl(174,5%,64%),
-
-  0 0 5px rgba(0,0,0,.05),
-  0 1px 3px rgba(0,0,0,.2),
-  0 3px 5px rgba(0,0,0,.2),
-  0 5px 10px rgba(0,0,0,.2);
-
-  box-sizing: border-box;
   border: ${config.dev.helperBorder} solid blue;
 `;
 
-const ComponentCounter = styled.div`
+const ComponentTextarea = styled.textarea`
 
-  margin-top: 2.5vh;
-  
+  margin: 0;
+
+  padding: 0;
+  padding-top: 5vh;
+  padding-bottom: 40vh;  
+
+  width: 90vw;
+  height: 40vh;
+
+  background: transparent;
+
   font-family: Roboto;
   font-size: 10vh;
   color: white;
@@ -215,7 +183,7 @@ const ComponentPriceWrapper = styled.div`
   }
 
   box-sizing: border-box;
-  border: ${config.dev.helperBorder} solid green;
+  border: ${config.dev.helperBorder} solid purple;
 
 `;
 
@@ -398,6 +366,10 @@ class ContainerMessage extends React.Component {
 
   handleChange(event) {
 
+   /*  event.target.style.height = event.target.clientHeight;
+
+    console.log(event) */
+
     this.setState({
       startedTyping: true,
       message: event.target.value,
@@ -433,13 +405,15 @@ class ContainerMessage extends React.Component {
 
   render() {
     return (
-      <Outer>
+      <ComponentOuter>
            
+          
           <ComponentNotificationsWrapper
             style={{
-              height: this.props.notifications.closed?'0':'20vh',
+              height: this.props.notifications.closed?'0':'17.5vh',
             }}
           >
+
            <a href={`${this.props.notifications.url}`} target="blank">
             <NotificationsText
               style={{
@@ -457,9 +431,10 @@ class ContainerMessage extends React.Component {
             >
             ╳
             </NotificationsClose>
+
           </ComponentNotificationsWrapper>
 
-            <Textarea
+            <ComponentTextarea
                value={`${this.state.message}`}
                onChange={(event) => {this.handleChange(event)}} 
             />
@@ -484,7 +459,7 @@ class ContainerMessage extends React.Component {
 
           <ComponentLogo/>
 
-      </Outer>
+      </ComponentOuter>
     );
   }
 
@@ -524,7 +499,7 @@ function actions(dispatch){
 export default connect(props, actions)(ContainerMessage);
 
 /*
- <textarea
+ <ComponentTextarea
           value={`${this.state.message}`}
           onChange={(event) => this.handleChange(event)} 
           />
