@@ -14,5 +14,4 @@ export default styled.div`
   box-shadow: 0px 0px 50px rgba(255, 255, 255, 1);
   
   box-sizing: border-box;
-  border: ${config.dev.helperBorder} solid gold;
 `;
