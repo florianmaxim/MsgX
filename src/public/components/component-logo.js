@@ -5,22 +5,22 @@ import styled, {keyframes} from 'styled-components';
 import * as config from '../../../config.json';
 
 const LogoContainer = styled.div`
-  margin-top: 2.5vh;
+  margin-top: 0vh;
     
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 
-  border: 0px solid red;
+  border: ${config.dev.helperBorder} solid red;
 `;
 
 const LogoOuter = styled.div`
-    width: 10vw;
-    height: 10vw;
 
-    max-width:75px;
-    max-height:75px;
+    margin: 2.5vh;
+
+    width: 5vh;
+    height: 5vh;
 
     display: flex;
     align-items: center;
