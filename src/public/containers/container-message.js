@@ -18,7 +18,6 @@ import styled from 'styled-components';
 const ComponentNotificationsWrapper = styled.div`
 
   transition: 0.5s all;
-  //transition-delay: 0.5s;
 
   margin:0;
   padding:0;
