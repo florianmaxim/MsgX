@@ -157,7 +157,19 @@ export default class BlockchainController {
 
     }
 
-    setMessage(message, price, cb){
+/*
+    Set new message
+    Take message object{
+        count: 0,
+        message: '',
+        price: 0,
+        author: 0,
+        date: 0,
+        step: 0
+    }
+
+*/
+    setMessage(message, cb){
 
         if(this.connectionType==='websocket'){
 
@@ -170,11 +182,11 @@ export default class BlockchainController {
             const data = {
                 from: web3.eth.coinbase,
                 to: CONTRACT_ADDRESS,
-                value: price,
+                value: message.price,
                 gasPrice: web3.toWei(0.00000001,'ether')
             };
 
-            CONTRACT.setMessage.sendTransaction(message, data, (err, res) => {
+            CONTRACT.setMessage.sendTransaction(message.message, data, (err, res) => {
 
                 //console.log('data')
                 //console.log('transactionHash:'+res)
@@ -195,19 +207,18 @@ export default class BlockchainController {
 
                         if(res){
 
-                            //Also write msg server for non blockchain connections
-                            this.socket.emit('setMessage', {
-                                message: message,
-                                price: price.toNumber(),
-                                author: web3.eth.coinbase.toString()
-                            });
+                            //console.log('Transcation mined')
 
-                            //console.log('transcation mined')
+                            //Also write msg server for non blockchain connections
+                            this.socket.emit('setMessage', message);
+
+                            
                             filter.stopWatching();
                             cb(message);
                             
                         }else{
-                            //console.log('transcation pending')
+                            
+                            //console.log('Transcation pending')
                         }
 
                     });

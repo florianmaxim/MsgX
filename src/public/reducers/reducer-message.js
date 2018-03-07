@@ -54,7 +54,7 @@ export default function (state = init, action) {
       count: state.count,
       message: state.message,
       price: state.price,
-      author: action.payload.toString(),
+      author: action.payload,
       date: state.date,
       step: state.step,
       connectionType: state.connectionType
@@ -67,7 +67,7 @@ export default function (state = init, action) {
       message: state.message,
       price: state.price,
       author: state.author,
-      date: action.payload.toNumber(),
+      date: action.payload,
       step: state.step,
       connectionType: state.connectionType
     }
@@ -80,7 +80,7 @@ export default function (state = init, action) {
       price: state.price,
       author: state.author,
       date: state.date,
-      step: action.payload.toNumber(),
+      step: action.payload,
       connectionType: state.connectionType
     }
   break;

@@ -376,9 +376,19 @@ class ContainerMessage extends React.Component {
   }
 
   handleOnClickButton(){
+
     if(this.props.message.connectionType==='blockchain'){
 
-      this.props.setMessage(this.state.message, this.props.message.price)
+      const message = {
+        count: this.state.count,
+        message: this.state.message,
+        price: this.state.price,
+        author: this.state.author,
+        date: this.state.date,
+        step: this.state.step,        
+      }  
+
+      this.props.setMessage(message);
 
     }else{
       window.open(`https://ropsten.etherscan.io/address/${this.props.message.author}`,"_blank")
@@ -396,7 +406,7 @@ class ContainerMessage extends React.Component {
     //If we are on the blockchain we are able to set the next msg...
     if(this.props.message.connectionType==='blockchain'){
 
-      console.log(this.props.message.price+'+'+this.props.message.step+'='+(Number(this.props.message.price)+Number(this.props.message.step)));
+      //console.log(this.props.message.price+'+'+this.props.message.step+'='+(Number(this.props.message.price)+Number(this.props.message.step)));
 
       this.setState({
 
@@ -404,6 +414,8 @@ class ContainerMessage extends React.Component {
         caption: `send (${web3.eth.coinbase.toString().substr(0,8)}...)`,
 
         date: new Date(),
+
+        author: String(web3.eth.coinbase),
 
         price: Number(this.props.message.price)+Number(this.props.message.step)
       })

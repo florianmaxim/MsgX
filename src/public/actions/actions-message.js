@@ -132,7 +132,6 @@ const getDate = () => {
 }
 
 const setMessage = (message, price) => {
-  console.log('setMessage')
 
   return (dispatch) => {
 
@@ -141,11 +140,20 @@ const setMessage = (message, price) => {
       connected = true;
     }   
 
-    Blockchain.setMessage(message, price, (msg) => {
+    Blockchain.setMessage(message, (msg) => {
 
+      getCount();
+      getMessage();
+      getAuthor();
       getPrice();
+      getDate();
+      getStep();
 
-      dispatch({type: "RECEIVE_MESSAGE", payload: msg})
+     /*  dispatch({type: "RECEIVE_COUNT", payload: msg.count})
+      dispatch({type: "RECEIVE_MESSAGE", payload: msg.message})
+      dispatch({type: "RECEIVE_AUTHOR", payload: msg.author})
+      dispatch({type: "RECEIVE_PRICE", payload: msg.price})
+      dispatch({type: "RECEIVE_DATE", payload: msg.date})  */           
 
     })
 

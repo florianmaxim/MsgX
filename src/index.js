@@ -19,9 +19,12 @@ import allReducers from './public/reducers';
 import App from './public/App';
 
 let message = {
-  message: "I loved the internet.",
-  price: 29000000000000000, //In Wei
-  author: "0x4518fc23a24c01fc55d94e8742c7e8ea54822a41"
+  count: 0,
+  message: '',
+  price: 0,
+  author: 0,
+  date: 0,
+  step: 0
 };
 
 const store = createStore(allReducers);
@@ -39,21 +42,27 @@ app.get('*', (req, res) => {
 
   io.on('connection', (socket) =>{
 
+    console.log('Websocket: connected.');
+    
+    io.sockets.emit('count',   message.count)    
     io.sockets.emit('message', message.message)
     io.sockets.emit('price',   message.price)
     io.sockets.emit('author',  message.author)
-
-    //console.log('Websocket: connected.');
+    io.sockets.emit('date',    message.date)
+    io.sockets.emit('step',    message.step)
 
     socket.on('setMessage', (newMessage) => {
 
-      //console.log('Websocket: Received new message: '+JSON.stringify(newMessage));
+      console.log('Websocket: Received new message: '+JSON.stringify(newMessage));
 
       message = newMessage;
 
+      socket.broadcast.emit('count', message.count)      
       socket.broadcast.emit('message', message.message)
       socket.broadcast.emit('price', message.price)
       socket.broadcast.emit('author', message.author)
+      socket.broadcast.emit('date', message.date)
+      socket.broadcast.emit('step', message.step)      
 
     });
   });
