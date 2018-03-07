@@ -14,6 +14,7 @@ import ComponentLogo   from '../components/component-logo';
 
 import styled from 'styled-components';
 
+
 const ComponentNotificationsWrapper = styled.div`
 
   transition: 0.5s all;
@@ -294,7 +295,7 @@ class ContainerMessage extends React.Component {
         message: config.notifications.dontHesitate[Math.floor(Math.random()*config.notifications.dontHesitate.length)],
         url: null
       })    
-    }, 30000)
+    }, 45000)
 
   }
 
