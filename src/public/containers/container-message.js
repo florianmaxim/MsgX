@@ -54,7 +54,7 @@ const ComponentNotificationsWrapper = styled.div`
   border: ${config.dev.helperBorder} solid green;
 `;
 
-const NotificationsText = styled.div`
+const ComponentNotificationsText = styled.div`
 
   width: 75vw;
 
@@ -81,7 +81,7 @@ const NotificationsText = styled.div`
   border: ${config.dev.helperBorder} solid green;
 `;
 
-const NotificationsClose = styled.div`
+const ComponentNotificationsClose = styled.div`
 
   width: 25vw;
 
@@ -415,22 +415,22 @@ class ContainerMessage extends React.Component {
           >
 
            <a href={`${this.props.notifications.url}`} target="blank">
-            <NotificationsText
+            <ComponentNotificationsText
               style={{
                 opacity: this.props.notifications.closed?'0':'1'
               }}
             >
               {this.props.notifications.message}
-            </NotificationsText>
+            </ComponentNotificationsText>
             </a>
-            <NotificationsClose
+            <ComponentNotificationsClose
               style={{
                 opacity: this.props.notifications.closed?'0':'1'
               }}
               onClick={()=>this.props.closeNotification()}
             >
             ╳
-            </NotificationsClose>
+            </ComponentNotificationsClose>
 
           </ComponentNotificationsWrapper>
 
