@@ -455,7 +455,7 @@ class ContainerMessage extends React.Component {
               }}
               onClick={()=>this.props.closeNotification()}
             >
-            ✖
+            ╳
             </NotificationsClose>
           </Notifications>
             <Textarea
