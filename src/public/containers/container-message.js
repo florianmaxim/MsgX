@@ -30,19 +30,19 @@ const Outer = styled.div`
   width: 100vw;
   min-height: 100vh;
 
-  box-sizing: border-box;
-  border: 0px solid gold;
-
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
 
   box-shadow: 0px 0px 50px rgba(255, 255, 255, 1);  
+
+  box-sizing: border-box;
+  border: ${config.dev.helperBorder} solid gold;
 `;
 
 
-const Notifications = styled.div`
+const ComponentNotificationsWrapper = styled.div`
 
   transition: 0.5s all;
   //transition-delay: 0.5s;
@@ -64,7 +64,7 @@ const Notifications = styled.div`
   }
 
   box-sizing: border-box;
-  //border: 5px solid green;
+  border: ${config.dev.helperBorder} solid green;
 
 `;
 
@@ -89,15 +89,15 @@ const NotificationsText = styled.div`
 
   text-align: left;
 
-  box-sizing: border-box;
-  //border: 5px solid green;
-
   @media(orientation: portrait){
 
     margin: 2.5vh;
     margin-left:4vh;
 
   }
+
+  box-sizing: border-box;
+  border: ${config.dev.helperBorder} solid gold;
 
 `;
 
@@ -117,14 +117,14 @@ const NotificationsClose = styled.div`
   cursor: pointer;
   user-select: none;
 
-  box-sizing: border-box;
-  //border: 5px solid blue;
-
   @media(orientation: portrait){
 
     margin-right: 2.5vh;
 
   }
+
+  box-sizing: border-box;
+  border: ${config.dev.helperBorder} solid gold;
 `;
 
 const Textarea = styled.textarea`
@@ -164,8 +164,7 @@ const Textarea = styled.textarea`
   0 5px 10px rgba(0,0,0,.2);
 
   box-sizing: border-box;
-  border: 5px solid blue;
-  border:0;
+  border: ${config.dev.helperBorder} solid blue;
 `;
 
 const ComponentCounter = styled.div`
@@ -197,8 +196,7 @@ const ComponentCounter = styled.div`
   0 5px 10px rgba(0,0,0,.2);
 
   box-sizing: border-box;
-  //border: 5px solid blue;
-  border:0;
+  border: ${config.dev.helperBorder} solid blue;
 `;
 
 const ComponentPriceWrapper = styled.div`
@@ -230,7 +228,7 @@ const ComponentPriceWrapper = styled.div`
   }
 
   box-sizing: border-box;
-  //border: 5px solid green;
+  border: ${config.dev.helperBorder} solid green;
 
 `;
 
@@ -245,55 +243,71 @@ const ComponentPriceLine = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  box-sizing: border-box;
+  border: ${config.dev.helperBorder} solid blue;
+  
 `;
 
 const ComponentPriceValue = styled.div`
 
-    width: 100%;
-    margin:12px;
-    padding:0;
-    
-    font-family: Lato;
-    font-size: 18px;
-    font-weight: 600;
-    
-    color: black;
+  width: 100%;
+  margin:12px;
+  padding:0;
+  
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: 600;
+  
+  color: black;
 
-    text-align: left;
+  text-align: left;
+
+  box-sizing: border-box;
+  border: ${config.dev.helperBorder} solid green;  
+
 `;
 
 const ComponentPriceCurrency = styled.div`
 
-    width: 100%;
-    margin:12px;
-    padding:0;
-    
-    font-family: Lato;
-    font-size: 18px;
-    font-weight: 600;
-    
-    color: black;
+  width: 100%;
+  margin:12px;
+  padding:0;
+  
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: 600;
+  
+  color: black;
 
-    text-align: right;
+  text-align: right;
+
+  box-sizing: border-box;
+  border: ${config.dev.helperBorder} solid red;
+
 `;
 
 const ComponentDate = styled.div`
 
-    width: 100%;
-    margin:12px;
+  width: 100%;
+  margin:12px;
 
-    margin-left:0;
-    margin-right:0;
-    
-    padding:0;
-    
-    font-family: Lato;
-    font-size: 18px;
-    font-weight: 600;
-    
-    color: black;
+  margin-left:0;
+  margin-right:0;
+  
+  padding:0;
+  
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: 600;
+  
+  color: black;
 
-    text-align: center;
+  text-align: center;
+
+  box-sizing: border-box;
+  border: ${config.dev.helperBorder} solid purple;
+
 `;
 
 
@@ -434,8 +448,7 @@ class ContainerMessage extends React.Component {
     return (
       <Outer>
            
-          
-          <Notifications
+          <ComponentNotificationsWrapper
             style={{
               height: this.props.notifications.closed?'0':'20vh',
             }}
@@ -457,7 +470,8 @@ class ContainerMessage extends React.Component {
             >
             ╳
             </NotificationsClose>
-          </Notifications>
+          </ComponentNotificationsWrapper>
+
             <Textarea
                value={`${this.state.message}`}
                onChange={(event) => {this.handleChange(event)}} 

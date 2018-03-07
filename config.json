@@ -17,7 +17,7 @@
         "name": "data"
     },
 
-    "logoInitials": "fm",
+    "logoInitials": "f",
     "logoText": "To The Internet With ❤️ From Florian Maxim",
     "logoEnabled": true,
     "logoURL": "https://florianmaxim.com",
@@ -36,5 +36,11 @@
         
     },
 
-    "buttonCaption": "set msg"
+    "buttonCaption": "set msg",
+
+    "dev": {
+
+        "helperBorder": "5px"
+    
+    }
 }
