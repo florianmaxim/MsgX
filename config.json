@@ -39,6 +39,8 @@
     "buttonCaption": "set msg",
 
     "dev": {
+
         "helperBorder": "0px"
+    
     }
 }
