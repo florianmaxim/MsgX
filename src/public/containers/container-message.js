@@ -29,7 +29,6 @@ const Outer = styled.div`
   border: ${config.dev.helperBorder} solid gold;
 `;
 
-
 const ComponentNotificationsWrapper = styled.div`
 
   transition: 0.5s all;
