@@ -13,8 +13,6 @@ import ComponentButton from '../components/component-button';
 import ComponentLogo   from '../components/component-logo';
 
 import styled from 'styled-components';
-<<<<<<< HEAD
-=======
 
 const Outer = styled.div`
   width: 100vw;
@@ -32,7 +30,6 @@ const Outer = styled.div`
 `;
 
 
->>>>>>> development
 const ComponentNotificationsWrapper = styled.div`
 
   transition: 0.5s all;
