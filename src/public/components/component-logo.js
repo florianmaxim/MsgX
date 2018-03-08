@@ -4,35 +4,26 @@ import styled, {keyframes} from 'styled-components';
 
 import * as config from '../../../config.json';
 
-const LogoContainer = styled.div`
-  margin-top: 2.5vh;
-    
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+const LogoOuter = styled.a`
 
-  border: 0px solid red;
-`;
+    margin: 2.5vh;
 
-const LogoOuter = styled.div`
     width: 10vw;
     height: 10vw;
 
-    max-width:75px;
-    max-height:75px;
+    max-width: 50px;
+    max-height: 50px;    
 
     display: flex;
     align-items: center;
     justify-content: center;
+
     background:transparent;
-    border: 10px solid transparent;
-    box-sizing: border-box;
   
     font-family: Lato;
-    font-size:2vw;
-    max-font-size:1.5em;
+    font-size: 25px;
     box-shadow: 0px 0px 15px rgba(255,255,255,0);
+
     color:white;
     opacity:.5;
 
@@ -43,38 +34,9 @@ const LogoOuter = styled.div`
     }
 
     transition: 3s opacity;
-`;
 
-const LogoText = styled.div`
-
-    width: 100vw;
-    height: 14px;
-    
-    max-height:75px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    background:transparent;
-
-    border: 10px solid transparent;
-    box-sizing: border-box;
-
-    font-family: Lato;
-    font-size:14px;
-    text-shadow: 0px 0px 5px rgba(0,0,0,.5);
-    text-align:center;
-    text-decoration: none;
-    
-    opacity:.5;
-
-    cursor: pointer;
-
-    @media(orientation: portrait){
-
-    }
-
-    transition: 1s opacity;
+    //box-sizing: border-box;
+    //border: ${config.dev.helperBorder} solid purple;
 `;
 
 export default class ComponentLogo extends Component {
@@ -90,24 +52,14 @@ export default class ComponentLogo extends Component {
   render(){
     return(
 
-        <LogoContainer
-            onMouseOver={()=>this.setState({logo:true})}
-            onMouseOut={()=>this.setState({logo:false})}
-            onTouchStart={()=>this.setState({logo:!this.state.logo})}                   
-        >
-         <a href={config.logoURL} target="blank"> 
-          
-          <LogoOuter       
-            style={{
-              boxShadow: this.state.logo?'0px 0px 15px rgba(255,255,255,.8)':'0px 0px 0px rgba(255,255,255,0)',
-              display:config.logoEnabled?'flex':'none'
-            }}>
+      <LogoOuter 
+        href={config.logoURL} 
+        target="blank"       
+        style={{
+          boxShadow: this.state.logo?'0px 0px 20px rgba(255,255,255,.85)':'0px 0px 0px rgba(255,255,255,0)'
+        }}>
             {config.logoInitials}
-          </LogoOuter>
-          
-        </a>          
-         
-        </LogoContainer>
+      </LogoOuter>
 
     );
 }

@@ -24,7 +24,8 @@
     
     "notifications": {
 
-        "notConnected": "You are not connected to the blockchain. ➝ Learn how! 🎓",
+        "notConnected": "You are not connected to the blockchain. ➝ Click here to Learn how! 🎓",
+        "cantSet": "❤️ You can't set a msg because you are not connected to the blockchain. ➝ Learn how! 🎓",
 
         "dontHesitate": [
             "🎉 Set a golden message to the internet now! It gets more expensive every time.",
@@ -38,9 +39,15 @@
 
     "buttonCaption": "set msg",
 
+    "currencies": [
+        ["ETH", 1],
+        ["EUR", 700],
+        ["USD", 850]
+      ],
+
     "dev": {
 
         "helperBorder": "0px"
-    
+
     }
 }
