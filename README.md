@@ -12,13 +12,13 @@
  <img align="center" src="resources/screen-1.jpg" />
 </p>
 
-## <p align="center">The current golden message to the internet as well as its count, it's date and author, can be seen by anyone (No connection to the blockchain required).</p>
+## <p align="center">The current golden message to the internet as well as its count, it's date and author, can be seen by anyone. (No connection to the blockchain required.)</p>
 
 <p align="center">
  <img align="center" src="resources/screen-1.jpg" />
 </p>
 
-## <p align="center">Setting a new golden message to the internet increases the price by 0.00001 ETH (Setting a message requires a connection to the blockchain).</p>
+## <p align="center">Setting a new golden message to the internet increases the price by 0.00001 ETH. (Setting a message requires a connection to the blockchain.)</p>
 
 <p align="center">
  <img align="center" src="resources/screen-2.jpg" />
