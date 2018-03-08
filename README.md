@@ -1,6 +1,6 @@
-# <p align="center">🔖 MsgX<br/> A Decentralized App<br/> To Set A Golden Message<br/>Until Someone Pays A Higher Price ✨</p>
-
 # <p align="center">! ON ROPSTEN TESTNET (SO FAR) !</p>
+
+# <p align="center">🔖 MsgX ✨</p>
 
 # <p align="center">→ <a href="https://msg.gold">https://msg.gold</a></p>
 
