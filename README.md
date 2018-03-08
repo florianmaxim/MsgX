@@ -18,7 +18,7 @@
  <img align="center" src="resources/screen-3.jpg" />
 </p>
 
-## <p align="center">Editing the current one or setting a new golden message to the internet increases the price by 0.00001 ETH. (Setting a message requires a connection to the blockchain.)</p>
+## <p align="center">Editing the current one or setting a new golden message to the internet increases the price by 0.00001 ETH. (Requires a connection to the blockchain.)</p>
 
 <p align="center">
  <img align="center" src="resources/screen-2.jpg" />
