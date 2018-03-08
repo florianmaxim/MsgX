@@ -1,4 +1,4 @@
-# <p align="center">! TEST PHASE: ROPSTEN TESTNET !</p>
+# <p align="center">!!! TEST PHASE: ROPSTEN TESTNET !!!</p>
 
 # <p align="center">🔖 MsgX (Gold) ✨</p>
 
