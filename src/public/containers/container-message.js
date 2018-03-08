@@ -279,6 +279,7 @@ class ContainerMessage extends React.Component {
     //alert(this.props.match.params.count)
 
     this.props.getConnectionType();
+    this.props.getConnectionNetwork();    
 
     this.props.getCount();    
     this.props.getMessage();
@@ -299,21 +300,45 @@ class ContainerMessage extends React.Component {
 
   componentWillReceiveProps(props){
 
-    if(!this.props.message.connectionType){
+    let notification = config.notifications.dontHesitate[Math.floor(Math.random()*config.notifications.dontHesitate.length)]
+    let url = 'https://github.com/florianmaxim/msgx';
 
-      let notification = config.notifications.dontHesitate[Math.floor(Math.random()*config.notifications.dontHesitate.length)]
-      let url = 'https://github.com/florianmaxim/msgx';
+    if(!this.props.message.connectionType&&props.message.connectionType){
 
+      
       if(props.message.connectionType==='websocket'){
         notification = config.notifications.notConnected;
       }
-      
+
       this.props.setNotification({
         message:notification,
         url: url
       });
 
     }
+
+    if(props.message.connectionNetwork!==null&&props.message.connectionNetwork!=='ropsten'){
+
+      if(props.message.connectionType==='blockchain')
+      this.props.setNotification({
+        message:config.notifications.wrongNetwork,
+        url: url
+      });
+
+    }
+
+
+      //We are connected to the blockchain, but are we on the right network?
+/*       if(!this.props.message.connectionNetwork&&props.message.connectionNetwork){
+        notification = props.message.connectionNetwork;
+
+        this.props.setNotification({
+          message:notification,
+          url: url
+        });
+
+      }   */
+
 
     this.setState({
       count: props.message.count,
@@ -466,6 +491,7 @@ function actions(dispatch){
   return bindActionCreators({
 
     getConnectionType: actionsMessage.getConnectionType,
+    getConnectionNetwork: actionsMessage.getConnectionNetwork,
 
     getCount: actionsMessage.getCount,
     getMessage: actionsMessage.getMessage,    

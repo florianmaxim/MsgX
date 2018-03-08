@@ -36,6 +36,39 @@ export default class BlockchainController {
     }
 
 /*
+    Get network
+*/
+
+    getNetwork(cb){
+
+        if(this.connectionType==='websocket'){
+
+            this.socket.on('message', (message) => {
+                return cb(message);
+            });
+
+        }else{
+
+            web3.version.getNetwork((err, id) => {
+                switch (id) {
+                case "1":
+                    cb('mainnet')
+                    break
+                case "2":
+                    cb('morden')
+                    break
+                case "3":
+                    cb('ropsten')
+                    break
+                default:
+                    cb('unknown')
+                }
+            });
+
+        }    
+    }
+
+/*
     Get connection type
 */
 

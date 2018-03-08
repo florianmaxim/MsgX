@@ -23,6 +23,23 @@ const getMessage = () => {
   }
 } 
 
+const getConnectionNetwork = () => {
+
+  return (dispatch) => {
+
+    if(!connected){
+      Blockchain.connect();
+      connected = true;
+    }    
+
+    Blockchain.getNetwork((type) => {
+
+      dispatch({type: "RECEIVE_CONENCTION_NETWORK", payload: type})
+
+    })
+  }
+}
+
 const getConnectionType = () => {
 
   return (dispatch) => {
@@ -155,4 +172,4 @@ const setMessage = (message, price) => {
 
 }
 
-export {getConnectionType, getMessage, getCount, getPrice, getStep, getAuthor, getDate, setMessage}
+export {getConnectionType, getConnectionNetwork, getMessage, getCount, getPrice, getStep, getAuthor, getDate, setMessage}

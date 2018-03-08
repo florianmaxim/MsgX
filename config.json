@@ -3,7 +3,7 @@
 
     "contractAddress": "0x3f6c23909f65856dc1c656dab013d5a4cac54f3f",
 
-    "log": true,
+    "log": false,
 
     "port": 3030,
     
@@ -25,6 +25,8 @@
     "notifications": {
 
         "notConnected": "You are not connected to the blockchain. ➝ Click here to Learn how! 🎓",
+        "wrongNetwork": "🔥 You are on the wrong network! Please connect to the ropsten testnet.",
+        
         "cantSet": "❤️ You can't set a msg because you are not connected to the blockchain. ➝ Learn how! 🎓",
 
         "dontHesitate": [

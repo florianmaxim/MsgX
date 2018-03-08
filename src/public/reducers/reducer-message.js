@@ -6,12 +6,26 @@ const init = {
   author: 0,
   date: 0,
   step: 0,
-  connectionType: null
+  connectionType: null,
+  connectionNetwork: null
 };
 
 export default function (state = init, action) {
 
   switch(action.type){
+
+    case "RECEIVE_CONENCTION_NETWORK":
+      return {
+        count: state.count,
+        message: state.message,
+        price: state.price,
+        author: state.author,
+        date: state.date,
+        step: state.step,
+        connectionType: state.connectionType,
+        connectionNetwork: action.payload       
+      }
+    break;
 
     case "RECEIVE_CONENCTION_TYPE":
       return {
@@ -22,6 +36,7 @@ export default function (state = init, action) {
         date: state.date,
         step: state.step,
         connectionType: action.payload,
+        connectionNetwork: state.connectionNetwork       
       }
     break;
 
@@ -33,7 +48,8 @@ export default function (state = init, action) {
         author: state.author,
         date: state.date,
         step: state.step,
-        connectionType: state.connectionType
+        connectionType: state.connectionType,
+        connectionNetwork: state.connectionNetwork
       }
     break;
 
@@ -45,7 +61,8 @@ export default function (state = init, action) {
       author: state.author,
       date: state.date,
       step: state.step,
-      connectionType: state.connectionType
+      connectionType: state.connectionType,
+      connectionNetwork: state.connectionNetwork
     }
     break;
 
@@ -57,7 +74,8 @@ export default function (state = init, action) {
       author: action.payload,
       date: state.date,
       step: state.step,
-      connectionType: state.connectionType
+      connectionType: state.connectionType,
+      connectionNetwork: state.connectionNetwork
     }
   break;
 
@@ -69,7 +87,8 @@ export default function (state = init, action) {
       author: state.author,
       date: action.payload,
       step: state.step,
-      connectionType: state.connectionType
+      connectionType: state.connectionType,
+      connectionNetwork: state.connectionNetwork
     }
   break;
 
@@ -81,7 +100,8 @@ export default function (state = init, action) {
       author: state.author,
       date: state.date,
       step: action.payload,
-      connectionType: state.connectionType
+      connectionType: state.connectionType,
+      connectionNetwork: state.connectionNetwork
     }
   break;
 
@@ -93,7 +113,8 @@ export default function (state = init, action) {
       author: state.author,
       date: state.date,
       step: state.step,
-      connectionType: state.connectionType
+      connectionType: state.connectionType,
+      connectionNetwork: state.connectionNetwork
     }
   break;
 
