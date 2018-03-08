@@ -4,25 +4,33 @@
 
 # <p align="center">→ <a href="https://msg.gold">https://msg.gold</a></p>
 
-## <p align="center">Send a message to the internet.</p><p align="center">It will be stored on the blockchain forever</p>
+## <p align="center">Set a golden message to the internet.</p><p align="center">It will be stored forever.</p>
+
+# <p align="center">How does it work?</p>
 
 <p align="center">
  <img align="center" src="resources/screen-1.jpg" />
 </p>
 
-## <p align="center">Screen 2</p>
+## <p align="center">The current golden message to the internet can be read by anyone (with or without a connection to the blockchain).</p>
+
+<p align="center">
+ <img align="center" src="resources/screen-1.jpg" />
+</p>
+
+## <p align="center">Setting a new golden message to the internet requires a connection to the blockchain. Every time a new golden message is set and stored on the blockchain the prices increases by 0.00001 ETH.</p>
 
 <p align="center">
  <img align="center" src="resources/screen-2.jpg" />
 </p>
 
-## <p align="center">Screen 3</p>
+## <p align="center">All previous golden messages can be called for free using the app (or directly via the smart contract).</p>
 
 <p align="center">
  <img align="center" src="resources/screen-3.jpg" />
 </p>
 
-## <p align="center">Screen 4</p>
+## <p align="center">The Genesis message to the internet "Is this decentralized or did someone buy this?" was 10000000000000 Wei which is 0.00001 ETH and around 0.001 USD.</p>
 
 <p align="center">
  <img align="center" src="resources/screen-4.jpg" />
