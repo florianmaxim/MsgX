@@ -1,6 +1,6 @@
 # <p align="center">! ON ROPSTEN TESTNET (SO FAR) !</p>
 
-# <p align="center">🔖 MsgX ✨</p>
+# <p align="center">🔖 MsgX (Gold) ✨</p>
 
 # <p align="center">→ <a href="https://msg.gold">https://msg.gold</a></p>
 
