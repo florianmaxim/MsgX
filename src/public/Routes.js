@@ -8,7 +8,7 @@ export default () =>
 
     <Switch>
 
-        <Route path="/set/:message" component={Message} />
+        <Route path="/:count" component={Message} />
 
         <Route exactPath="/" component={Message} />
 

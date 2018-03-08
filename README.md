@@ -44,7 +44,7 @@
     </a>
 </p>
 
-# <p align="center">Set up and browse to <a href="https://msg.gold">https://msg.gold</a>.</p>
+## <p align="center">Set up and browse to <a href="https://msg.gold">https://msg.gold</a>.</p>
 
 ## <p align="center">Mobile</p>
 
@@ -62,7 +62,7 @@
     </a>
 </p>
 
-# <p align="center"> Set up and browse to <a href="https://msg.gold">https://msg.gold</a>.</p>
+## <p align="center"> Set up and browse to <a href="https://msg.gold">https://msg.gold</a>.</p>
 
 # <p align="center">Status</p>
 
