@@ -317,6 +317,7 @@ class ContainerMessage extends React.Component {
 
     }
 
+    //Check if on the right network
     if(props.message.connectionNetwork!==null&&props.message.connectionNetwork!=='ropsten'){
 
       if(props.message.connectionType==='blockchain')
@@ -326,19 +327,6 @@ class ContainerMessage extends React.Component {
       });
 
     }
-
-
-      //We are connected to the blockchain, but are we on the right network?
-/*       if(!this.props.message.connectionNetwork&&props.message.connectionNetwork){
-        notification = props.message.connectionNetwork;
-
-        this.props.setNotification({
-          message:notification,
-          url: url
-        });
-
-      }   */
-
 
     this.setState({
       count: props.message.count,
