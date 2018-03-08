@@ -12,19 +12,19 @@
  <img align="center" src="resources/screen-1.jpg" />
 </p>
 
-## <p align="center">The current golden message to the internet can be read by anyone (with or without a connection to the blockchain).</p>
+## <p align="center">The current golden message to the internet as well as its count, it's date and author, can be seen by anyone (No connection to the blockchain required).</p>
 
 <p align="center">
  <img align="center" src="resources/screen-1.jpg" />
 </p>
 
-## <p align="center">Setting a new golden message to the internet requires a connection to the blockchain. Every time a new golden message is set and stored on the blockchain the prices increases by 0.00001 ETH.</p>
+## <p align="center">Setting a new golden message to the internet increases the price by 0.00001 ETH (Setting a message requires a connection to the blockchain).</p>
 
 <p align="center">
  <img align="center" src="resources/screen-2.jpg" />
 </p>
 
-## <p align="center">All previous golden messages can be called for free using the app (or directly via the smart contract).</p>
+## <p align="center">All previous golden messages are accessible forever and can be called for free using the app (or directly via the smart contract).</p>
 
 <p align="center">
  <img align="center" src="resources/screen-3.jpg" />
