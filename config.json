@@ -5,7 +5,7 @@
 
     "log": false,
 
-    "port": 4040,
+    "port": 3030,
     
     "info": {
         "name": "MsgX",
