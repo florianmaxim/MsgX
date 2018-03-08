@@ -63,3 +63,12 @@
 </p>
 
 # <p align="center"> Set up and browse to <a href="https://msg.gold">https://msg.gold</a>.</p>
+
+# Status
+
+## Smart Contract
+
+| branch      | address                                    |
+|-------------|--------------------------------------------|
+| master      |                                            |
+| development | 0x3f6c23909f65856dc1c656dab013d5a4cac54f3f |
