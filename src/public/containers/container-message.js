@@ -276,7 +276,7 @@ class ContainerMessage extends React.Component {
 
   componentDidMount(){
 
-    alert(this.props.match.params.count)
+    //alert(this.props.match.params.count)
 
     this.props.getConnectionType();
 
