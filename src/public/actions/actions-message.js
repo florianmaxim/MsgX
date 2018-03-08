@@ -147,13 +147,7 @@ const setMessage = (message, price) => {
       getAuthor();
       getPrice();
       getDate();
-      getStep();
-
-     /*  dispatch({type: "RECEIVE_COUNT", payload: msg.count})
-      dispatch({type: "RECEIVE_MESSAGE", payload: msg.message})
-      dispatch({type: "RECEIVE_AUTHOR", payload: msg.author})
-      dispatch({type: "RECEIVE_PRICE", payload: msg.price})
-      dispatch({type: "RECEIVE_DATE", payload: msg.date})  */           
+      getStep();       
 
     })
 

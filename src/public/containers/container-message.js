@@ -17,6 +17,12 @@ import styled from 'styled-components';
 
 const ComponentNotificationsWrapper = styled.div`
 
+  z-index: 1;
+
+  position: fixed;
+  top: 0;
+  left:0;
+
   transition: 0.5s all;
 
   margin:0;
@@ -100,14 +106,20 @@ const ComponentNotificationsClose = styled.div`
 
 const ComponentTextarea = styled.textarea`
 
+  z-index:0;
+
+  position: fixed;
+
+  top:0;
+
   margin: 0;
 
-  padding: 0;
+  padding: 5vw;
   padding-top: 5vh;
   padding-bottom: 40vh;  
 
   width: 90vw;
-  height: 40vh;
+  height: 100vh;
 
   background: transparent;
 
@@ -141,31 +153,16 @@ const ComponentTextarea = styled.textarea`
 
 const ComponentPriceWrapper = styled.div`
 
+  z-index:1;
+
+  position: fixed;
+
+  bottom: 0;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  a{
-    margin: 8px;
-    margin-right: 12px;
-    
-    padding:0;
-
-    width: 100%;
-    
-    font-family: Lato;
-    font-size: 12px;
-    font-weight: 600;
-    
-    color: red;
-    text-shadow: 0px -0px 4px rgba(255, 255, 255, .25);
-
-    //text-decoration: underline;
-    text-transform: uppercase;
-
-    text-align: right;
-  }
 
   box-sizing: border-box;
   border: ${config.dev.helperBorder} solid purple;
@@ -174,6 +171,8 @@ const ComponentPriceWrapper = styled.div`
 
 const ComponentPriceLine = styled.div`
 
+  margin-bottom: 8px;
+  
   width: 100%;
 
   cursor: pointer;
@@ -192,8 +191,9 @@ const ComponentPriceLine = styled.div`
 const ComponentPriceValue = styled.div`
 
   width: 100%;
-  margin:12px;
-  padding:0;
+
+  margin: 0;
+  padding: 0;
   
   font-family: Lato;
   font-size: 18px;
@@ -211,8 +211,9 @@ const ComponentPriceValue = styled.div`
 const ComponentPriceCurrency = styled.div`
 
   width: 100%;
-  margin:12px;
-  padding:0;
+
+  margin: 0;
+  padding: 0;
   
   font-family: Lato;
   font-size: 18px;
@@ -230,7 +231,9 @@ const ComponentPriceCurrency = styled.div`
 const ComponentDate = styled.div`
 
   width: 100%;
-  margin:12px;
+
+  margin-top: 8px;
+  margin-bottom:0;  
 
   margin-left:0;
   margin-right:0;
@@ -250,12 +253,6 @@ const ComponentDate = styled.div`
 
 `;
 
-
-const currencies = [
-  ["EUR", 700],
-  ["ETH", 1],
-  ["USD", 850]
-]
 
 class ContainerMessage extends React.Component {
 
@@ -345,15 +342,16 @@ class ContainerMessage extends React.Component {
       this.props.setMessage(message);
 
     }else{
-      window.open(`https://ropsten.etherscan.io/address/${this.props.message.author}`,"_blank")
+
+      this.props.setNotification({
+        message:config.notifications.cantSet,
+        url: 'https://github.com/florianmaxim/msgx'
+      });
+      
     }
   }
 
   handleChange(event) {
-
-   /*  event.target.style.height = event.target.clientHeight;
-
-    console.log(event) */
 
     this.setState({
       startedTyping: true,
@@ -369,7 +367,8 @@ class ContainerMessage extends React.Component {
       this.setState({
 
         //caption: `${String(this.state.count)}. (${web3.eth.coinbase.toString().substr(0,8)}...`
-        caption: `send (${web3.eth.coinbase.toString().substr(0,8)}...)`,
+        //caption: `send (${web3.eth.coinbase.toString().substr(0,8)}...)`,
+        caption: `set ${this.state.count}.`,
 
         date: new Date(),
 
@@ -381,11 +380,11 @@ class ContainerMessage extends React.Component {
   }
 
   toggleCurrency(){
-    this.setState({currency:this.state.currency<currencies.length-1?this.state.currency+1:0})
+    this.setState({currency:this.state.currency<config.currencies.length-1?this.state.currency+1:0})
   }
 
   renderPrice(){
-    return `${((this.state.price/1000000000000000000)*currencies[this.state.currency][1]).toFixed(5)}`;
+    return `${((this.state.price/1000000000000000000)*config.currencies[this.state.currency][1]).toFixed(5)}`;
   }
 
   render() {
@@ -429,7 +428,7 @@ class ContainerMessage extends React.Component {
             <ComponentPriceLine onClick={() => this.toggleCurrency()}>
 
               <ComponentPriceValue>{this.renderPrice()}</ComponentPriceValue>
-              <ComponentPriceCurrency>{`${currencies[this.state.currency][0]} ▼`}</ComponentPriceCurrency>
+              <ComponentPriceCurrency>{`${config.currencies[this.state.currency][0]}`}</ComponentPriceCurrency>
               
             </ComponentPriceLine>
             
@@ -440,10 +439,11 @@ class ContainerMessage extends React.Component {
 
             <ComponentDate>{this.state.date.toString().substr(0,24)}</ComponentDate>
 
+            <ComponentLogo/>
+
           </ComponentPriceWrapper>
 
-          <ComponentLogo/>
-
+          
       </ComponentOuter>
     );
   }

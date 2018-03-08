@@ -1,32 +1,36 @@
-# <p align="center">🔖 MsgX<br/> A Decentralized App<br/> To Set A Golden Message<br/>Until Someone Pays A Higher Price ✨</p>
-
 # <p align="center">! ON ROPSTEN TESTNET (SO FAR) !</p>
+
+# <p align="center">🔖 MsgX (Gold) ✨</p>
 
 # <p align="center">→ <a href="https://msg.gold">https://msg.gold</a></p>
 
-## <p align="center">Send a message to the internet.</p><p align="center">It will be stored on the blockchain forever</p>
+## <p align="center">Set a golden message to the internet.</p><p align="center">It will be stored forever.</p>
+
+# <p align="center">How does it work?</p>
 
 <p align="center">
  <img align="center" src="resources/screen-1.jpg" />
 </p>
 
-## <p align="center">Screen 2</p>
+## <p align="center">The current golden message to the internet as well as its count, it's date and author, can be seen by anyone. (No connection to the blockchain required.)</p>
 
 <p align="center">
  <img align="center" src="resources/screen-2.jpg" />
 </p>
 
-## <p align="center">Screen 3</p>
+## <p align="center">Editing the current one or setting a new golden message to the internet increases the price by 0.00001 ETH. (Requires a connection to the blockchain.)</p>
 
 <p align="center">
  <img align="center" src="resources/screen-3.jpg" />
 </p>
 
-## <p align="center">Screen 4</p>
+## <p align="center">All previous golden messages are accessible forever and can be called for free using the app (or directly via the smart contract).</p>
 
 <p align="center">
  <img align="center" src="resources/screen-4.jpg" />
 </p>
+
+## <p align="center">The Genesis message to the internet "Is this decentralized or did someone buy this?" was 10000000000000 Wei which is 0.00001 ETH and around 0.001 USD.</p>
 
 #  <p align="center">How to connect to the blockchain?</p>
 
