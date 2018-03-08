@@ -66,15 +66,19 @@
 
 # <p align="center">Run the App yourself</p>
 
-### Install
+## <p align="center">Install</p>
 ```javascript
 git clone https://github.com/florianmaxim/xgold
 ```
-### Run
+## <p align="center">Run</p>
 ```javascript
 npm install && npm run build && npm start
 ```
-Broswe to localhost:3030.
+## <p align="center">Run</p>
+
+```javascript
+Browse to https://localhost:30303
+```
 
 # <p align="center"> License</p>
 
