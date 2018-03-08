@@ -8,14 +8,10 @@
 
 # <p align="center">How does it work?</p>
 
-<p align="center">
- <img align="center" src="resources/screen-1.jpg" />
-</p>
-
 ## <p align="center">The current golden message to the internet as well as its count, it's date and author, can be seen by anyone. (No connection to the blockchain required.)</p>
 
 <p align="center">
- <img align="center" src="resources/screen-2.jpg" />
+ <img align="center" src="resources/screen-1.jpg" />
 </p>
 
 ## <p align="center">Editing the current one or setting a new golden message to the internet increases the price by 0.00001 ETH. (Requires a connection to the blockchain.)</p>
