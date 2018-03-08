@@ -64,6 +64,22 @@
 
 ## <p align="center"> Set up and browse to <a href="https://msg.gold">https://msg.gold</a>.</p>
 
+# <p align="center">Run the App yourself</p>
+
+### Install
+```javascript
+git clone https://github.com/florianmaxim/xgold
+```
+### Run
+```javascript
+npm install && npm run build && npm start
+```
+Broswe to localhost:3030.
+
+# <p align="center"> License</p>
+
+## <p align="center">MIT</p>
+
 # <p align="center">Status</p>
 
 ## <p align="center">Smart Contracts</p>
