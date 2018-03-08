@@ -49,7 +49,7 @@
 
     "dev": {
 
-        "helperBorder": "1px"
+        "helperBorder": "0px"
 
     }
 }
