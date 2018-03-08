@@ -68,10 +68,10 @@
 
 ## <p align="center">Smart Contracts</p>
 
-| branch      | address                                    |
-|-------------|--------------------------------------------|
-| master      |                                            |
-| development | 0x3f6c23909f65856dc1c656dab013d5a4cac54f3f |
+| Branch      | Address                                    | Network           |
+|-------------|--------------------------------------------|-------------------|
+| master      |                                            | Mainnet           |
+| development | 0x3f6c23909f65856dc1c656dab013d5a4cac54f3f | Testnet (Ropsten) |
 
 # <p align="center"> License</p>
 
