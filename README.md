@@ -1,5 +1,3 @@
-# <p align="center">!!! TEST PHASE: ROPSTEN TESTNET !!!</p>
-
 # <p align="center">🔖 MsgX (Gold) ✨</p>
 
 # <p align="center">→ <a href="https://msg.gold">https://msg.gold</a></p>
