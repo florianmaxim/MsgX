@@ -1,7 +1,9 @@
 {
     "contractABI": [{"constant":true,"inputs":[],"name":"creator","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"count","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"messages","outputs":[{"name":"count","type":"uint256"},{"name":"message","type":"string"},{"name":"author","type":"address"},{"name":"price","type":"uint256"},{"name":"date","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"date","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"newMessage","type":"string"}],"name":"setMessage","outputs":[{"name":"","type":"string"}],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"kill","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"price","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"author","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"reset","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"message","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"step","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}],
+    
+    "contractAddress": "0x4bC0938382C2F6F7bA61c5020Aa1C912B041B8Ec",
 
-    "contractAddress": "0x3f6c23909f65856dc1c656dab013d5a4cac54f3f",
+    "contractAddressDev": "0x3f6c23909f65856dc1c656dab013d5a4cac54f3f",    
 
     "log": false,
 
@@ -25,7 +27,7 @@
     "notifications": {
 
         "notConnected": "You are not connected to the blockchain. ➝ Click here to Learn how! 🎓",
-        "wrongNetwork": "🔥 You are on the wrong network! Please connect to the ropsten testnet.",
+        "wrongNetwork": "🔥 You are on the wrong network! Please connect to the mainnet.",
         
         "cantSet": "❤️ You can't set a msg because you are not connected to the blockchain. ➝ Learn how! 🎓",
 

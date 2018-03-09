@@ -318,7 +318,7 @@ class ContainerMessage extends React.Component {
     }
 
     //Check if on the right network
-    if(props.message.connectionNetwork!==null&&props.message.connectionNetwork!=='ropsten'){
+    if(props.message.connectionNetwork!==null&&props.message.connectionNetwork!=='mainnet'){
 
       if(props.message.connectionType==='blockchain')
       this.props.setNotification({
