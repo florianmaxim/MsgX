@@ -190,18 +190,6 @@ export default class BlockchainController {
 
     }
 
-/*
-    Set new message
-    Take message object{
-        count: 0,
-        message: '',
-        price: 0,
-        author: 0,
-        date: 0,
-        step: 0
-    }
-
-*/
     setMessage(message, cb){
 
         if(this.connectionType==='websocket'){

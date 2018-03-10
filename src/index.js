@@ -16,6 +16,8 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import allReducers from './public/reducers';
 
+import HTMLDocument from './HTMLDocument';
+
 import App from './public/App';
 
 let message = {
@@ -71,7 +73,7 @@ app.get('*', (req, res) => {
 
   const sheet = new ServerStyleSheet();
 
-  const html = ReactDOMServer.renderToString(
+  const appRenderedToString = ReactDOMServer.renderToString(
     
     sheet.collectStyles(
 
@@ -87,7 +89,7 @@ app.get('*', (req, res) => {
     )
   );
 
-  const styles = sheet.getStyleTags();
+  const stylesRenderedToCSS = sheet.getStyleTags();
 
   if(context.url){
     res.writeHead(301, {
@@ -98,7 +100,15 @@ app.get('*', (req, res) => {
   }else{
 
     res.header('Content-Type', 'text/html');
-    res.write(`<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="shortcut icon" type="image/x-icon" href="/static/favicon.png"><title>${config.info.slogan}</title>${styles}</head><body><div id="root">${html}</div><script src="/bundle.js"></script></body></html>`)
+    res.write(new HTMLDocument({
+      head: {
+        title: config.info.name,
+        styles: stylesRenderedToCSS, 
+      },
+      body: {
+        root: appRenderedToString
+      }
+    }).getDocument());
     res.end();
     
   }
