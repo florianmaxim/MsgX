@@ -216,7 +216,7 @@ export default class BlockchainController {
                 from: web3.eth.coinbase,
                 to: CONTRACT_ADDRESS,
                 value: message.price,
-                gasPrice: web3.toWei(0.00000001,'ether')
+                //gasPrice: web3.toWei(0.00000001,'ether')
             };
 
             CONTRACT.setMessage.sendTransaction(message.message, data, (err, res) => {
