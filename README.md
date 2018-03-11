@@ -1,11 +1,10 @@
 # <p align="center">🔖 MsgX (Gold) ✨</p>
 
-# <p align="center">→ <a href="https://msg.gold">https://msg.gold</a></p>
-
 ## <p align="center">Set a golden message to the internet.</p><p align="center">It will be stored forever.</p>
 
-# <p align="center">[![Build Status](https://travis-ci.org/florianmaxim/MsgX.svg?branch=master)](https://travis-ci.org/florianmaxim/MsgX)</p>
+# <p align="center">[![Build Status](https://travis-ci.org/florianmaxim/MsgX.svg?branch=master)](https://travis-ci.org/florianmaxim/MsgX) [![https://msg.gold](https://img.shields.io/badge/msg.gold-online-green.svg)](https://msg.gold)</p>
 
+## <p align="center">→ <a href="https://msg.gold">https://msg.gold</a></p>
 
 # <p align="center">How does it work?</p>
 
