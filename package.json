@@ -4,6 +4,7 @@
   "description": "ÐApp To Set A Golden Message Until Someone Pays A Higher Price",
   "main": "index.js",
   "scripts": {
+    "test": "npm run build",
     "build": "npx babel src --out-dir lib && webpack --config .webpack.config.babel.js --progress --env production",
     "start": "node lib/index.js"
   },

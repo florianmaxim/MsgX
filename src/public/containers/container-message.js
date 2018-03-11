@@ -114,7 +114,7 @@ const ComponentTextarea = styled.textarea`
 
   margin: 0;
 
-  padding: 5vw;
+  padding: 2.5vw;
   padding-top: 5vh;
   padding-bottom: 40vh;  
 
@@ -133,6 +133,8 @@ const ComponentTextarea = styled.textarea`
 
   overflow: hidden;
   overflow-y: scroll;
+
+  word-break: break-normal;
 
   outline: 0;
 
